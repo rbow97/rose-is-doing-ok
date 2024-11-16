@@ -1,0 +1,35 @@
+.header {
+  width: 100%;
+}
+
+.header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header nav a {
+  font-size: var(--font-size-lg);
+  @media (min-width: 768px) {
+    font-size: var(--font-size-xl);
+  }
+}
+
+.header nav a span {
+  cursor: pointer;
+}
+
+.header nav ul {
+  display: flex;
+  gap: var(--spacing-md);
+  list-style: none;
+}
+
+.header nav ul li {
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-md);
+  }
+}

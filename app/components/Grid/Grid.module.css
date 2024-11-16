@@ -1,0 +1,23 @@
+.grid {
+  display: grid;
+  gap: var(--spacing-xl);
+  width: 100%;
+
+  @media (min-width: 768px) {
+    gap: var(--spacing-lg);
+  }
+}
+
+.columns4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.columns6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,37 @@
+:root {
+  /* Moods */
+  --mood-happy: #cbd3b1;
+  --mood-sad: #fdae90;
+  --mood-calm: #feebc1;
+  --mood-neutral: #b59a8e;
+
+  /* Current mood color (will be updated dynamically) */
+  --current-mood-colour: var(--mood-neutral);
+
+  /* Colours */
+  --background-colour: #fbf9ee;
+  --text-colour: #222222;
+  --text-colour-muted: #6a6a6a;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Typography */
+  --font-primary: system-ui, -apple-system, sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-weight-regular: 400;
+
+  /* Layout */
+  --container-width: 1860px;
+  --border-radius: 0.5rem;
+
+  /* Transitions */
+  --transition-speed: 0.3s;
+}
