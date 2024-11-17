@@ -2,7 +2,8 @@ import { client } from "@/sanity/lib/client";
 import { Post } from "@/sanity/schemaTypes/post";
 
 export async function getAllPosts(): Promise<Post[]> {
-  return await client.fetch(`
+  return await client.fetch(
+    `
     *[_type == "post"] | order(dateUploaded desc) {
       _id,
       contentType,
@@ -15,7 +16,10 @@ export async function getAllPosts(): Promise<Post[]> {
       content,
       song
     }
-  `);
+  `,
+    {},
+    { next: { revalidate: 0 } } // Disable Next.js cache
+  );
 }
 
 export async function getPostById(id: string): Promise<Post> {
