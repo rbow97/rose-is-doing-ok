@@ -39,6 +39,9 @@ const spaceGrotesk = localFont({
 export const metadata: Metadata = {
   title: "Rose is doing ok",
   description: "A scrapbook of my mental health journey",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

@@ -10,7 +10,12 @@ export function Header() {
         <a>
           Rose is <span className="underline">doing ok</span>
         </a>
-        <Image src="/moods.svg" alt="mood icons" width={88} height={16} />
+        <div className={styles.moodIcons}>
+          <Image src="/sad.svg" alt="sad" width={16} height={16} />
+          <Image src="/neutral.svg" alt="neutral" width={16} height={16} />
+          <Image src="/calm.svg" alt="calm" width={16} height={16} />
+          <Image src="/happy.svg" alt="happy" width={16} height={16} />
+        </div>
         <ul>
           <li className="underline">Mood</li>
           <li className="underline">Index</li>

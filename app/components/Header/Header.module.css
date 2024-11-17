@@ -15,11 +15,6 @@
   }
 }
 
-.header nav img {
-  margin-right: auto;
-  margin-left: var(--spacing-md);
-}
-
 .header nav a span {
   cursor: pointer;
 }
@@ -37,4 +32,11 @@
   @media (min-width: 768px) {
     font-size: var(--font-size-md);
   }
+}
+
+.moodIcons {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-right: auto;
+  margin-left: var(--spacing-md);
 }
