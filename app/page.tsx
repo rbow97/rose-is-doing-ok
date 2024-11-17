@@ -1,6 +1,6 @@
+import { postsPromise } from "@/utils/sanity.utils";
 import { Grid } from "./components/Grid/Grid";
 import Post from "./components/Post/Post";
-import { postsPromise } from "./layout";
 import styles from "./page.module.css";
 
 export default async function Home() {

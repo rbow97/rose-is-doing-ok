@@ -4,7 +4,7 @@ import "@/styles/global.css";
 import { Header } from "./components/Header/Header";
 import { Container } from "./components/Container/Container";
 import { MoodProvider } from "@/context/MoodContext";
-import { getAllPosts } from "@/utils/sanity.utils";
+import { postsPromise } from "@/utils/sanity.utils";
 import { MoodInitializer } from "./components/MoodInitializer";
 
 const spaceGrotesk = localFont({
@@ -45,8 +45,6 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
   },
 };
-
-export const postsPromise = getAllPosts();
 
 export default async function RootLayout({
   children,

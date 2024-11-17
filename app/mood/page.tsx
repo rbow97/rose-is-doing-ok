@@ -1,8 +1,8 @@
 import { Table } from "../components/Table/Table";
 import { Post } from "@/sanity/schemaTypes/post";
 import styles from "./page.module.css";
-import { postsPromise } from "../layout";
 import { Grid } from "../components/Grid/Grid";
+import { postsPromise } from "@/utils/sanity.utils";
 
 export default async function MoodPage() {
   const posts = await postsPromise;
