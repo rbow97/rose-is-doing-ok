@@ -145,10 +145,15 @@ export interface SanityImage {
   };
 }
 
+export enum ContentType {
+  REGULAR = "regular",
+  MOOD = "mood",
+}
+
 export interface Post {
   _id: string;
   _createdAt: string;
-  contentType: "regular" | "mood";
+  contentType: ContentType;
   header: string;
   images: SanityImage[];
   moodType?: "happy" | "sad" | "excited" | "calm";

@@ -17,6 +17,7 @@ const moodColours: MoodColours = {
 interface MoodContextType {
   currentMoodColour: string;
   updateMoodFromPosts: (posts: Post[]) => void;
+  getMoodColour: (moodType: string) => string;
 }
 
 const MoodContext = createContext<MoodContextType | undefined>(undefined);
@@ -47,8 +48,12 @@ export function MoodProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const getMoodColour = (moodType: string) => {
+    return moodColours[moodType.toLowerCase()] || moodColours.neutral;
+  };
+
   return (
-    <MoodContext.Provider value={{ currentMoodColour, updateMoodFromPosts }}>
+    <MoodContext.Provider value={{ currentMoodColour, updateMoodFromPosts, getMoodColour }}>
       {children}
     </MoodContext.Provider>
   );

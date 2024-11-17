@@ -1,12 +1,27 @@
-import type { Post, SanityImage } from "@/sanity/schemaTypes/post";
+"use client";
+
+import {
+  ContentType,
+  type Post,
+  type SanityImage,
+} from "@/sanity/schemaTypes/post";
 import Image from "next/image";
 import styles from "./Post.module.css";
+import { useMood } from "@/context/MoodContext";
+import { useEffect, useState } from "react";
 
 interface PostProps {
   post: Post;
 }
 
 export default function Post({ post }: PostProps) {
+  const { getMoodColour } = useMood();
+  const [formattedDate, setFormattedDate] = useState<string>("");
+
+  useEffect(() => {
+    setFormattedDate(new Date(post.dateUploaded).toLocaleDateString());
+  }, [post.dateUploaded]);
+
   const firstImage = post.images?.[0];
   const firstImageAspectRatio =
     (firstImage as SanityImage)?.asset?.metadata?.dimensions?.aspectRatio ?? 1;
@@ -34,7 +49,16 @@ export default function Post({ post }: PostProps) {
 
       <div className={styles.postHeader}>
         <h2>{post.header}</h2>
-        <time>{new Date(post.dateUploaded).toLocaleDateString()}</time>
+        {post.contentType === ContentType.MOOD && (
+          <span
+            style={
+              post.moodType
+                ? { backgroundColor: getMoodColour(post.moodType) }
+                : undefined
+            }
+          />
+        )}
+        <time>{formattedDate}</time>
       </div>
     </article>
   );

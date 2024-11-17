@@ -15,6 +15,11 @@
   }
 }
 
+.header nav img {
+  margin-right: auto;
+  margin-left: var(--spacing-md);
+}
+
 .header nav a span {
   cursor: pointer;
 }

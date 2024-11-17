@@ -7,11 +7,16 @@ import styles from "./page.module.css";
 export default async function Home() {
   const posts = await getAllPosts();
 
+  const sortedPosts = [...posts].sort(
+    (a, b) =>
+      new Date(b.dateUploaded).getTime() - new Date(a.dateUploaded).getTime()
+  );
+
   return (
     <main>
       <MoodInitializer posts={posts} />
       <Grid className={styles.container}>
-        {posts.map((post) => (
+        {sortedPosts.map((post) => (
           <Post key={post._id} post={post} />
         ))}
       </Grid>
