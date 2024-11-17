@@ -4,11 +4,16 @@ import { getPostById } from "@/utils/sanity.utils";
 import Image from "next/image";
 import styles from "./page.module.css";
 
-interface PostPageProps {
-  params: { id: string };
-}
+//  https://stackoverflow.com/questions/79124951/type-error-in-next-js-route-type-params-id-string-does-not-satis
 
-export default async function PostPage({ params }: PostPageProps) {
+type Params = Promise<{ id: string }>;
+
+type Props = {
+  params: Params;
+};
+
+export default async function PostPage(props: Props) {
+  const params = await props.params;
   const post = await getPostById(params.id);
 
   return (
