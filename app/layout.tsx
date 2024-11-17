@@ -4,7 +4,7 @@ import "@/styles/global.css";
 import { Header } from "./components/Header/Header";
 import { Container } from "./components/Container/Container";
 import { MoodProvider } from "@/context/MoodContext";
-import { postsPromise } from "@/utils/sanity.utils";
+import { getAllPosts } from "@/utils/sanity.utils";
 import { MoodInitializer } from "./components/MoodInitializer";
 
 const spaceGrotesk = localFont({
@@ -51,7 +51,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const posts = await postsPromise;
+  const posts = await getAllPosts();
 
   return (
     <html lang="en">

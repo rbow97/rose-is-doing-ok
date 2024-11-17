@@ -2,10 +2,10 @@ import { Table } from "../components/Table/Table";
 import { Post } from "@/sanity/schemaTypes/post";
 import styles from "./page.module.css";
 import { Grid } from "../components/Grid/Grid";
-import { postsPromise } from "@/utils/sanity.utils";
+import { getAllPosts } from "@/utils/sanity.utils";
 
 export default async function MoodPage() {
-  const posts = await postsPromise;
+  const posts = await getAllPosts();
 
   // Filter posts with mood type and group by date
   const moodsByDate = posts

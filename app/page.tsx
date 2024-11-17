@@ -1,10 +1,10 @@
-import { postsPromise } from "@/utils/sanity.utils";
+import { getAllPosts } from "@/utils/sanity.utils";
 import { Grid } from "./components/Grid/Grid";
 import Post from "./components/Post/Post";
 import styles from "./page.module.css";
 
 export default async function Home() {
-  const posts = await postsPromise;
+  const posts = await getAllPosts();
 
   const sortedPosts = [...posts].sort(
     (a, b) =>

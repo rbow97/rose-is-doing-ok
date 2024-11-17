@@ -1,8 +1,6 @@
 import { client } from "@/sanity/lib/client";
 import { Post } from "@/sanity/schemaTypes/post";
 
-export const postsPromise = getAllPosts();
-
 export async function getAllPosts(): Promise<Post[]> {
   return await client.fetch(
     `
