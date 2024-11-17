@@ -11,6 +11,11 @@
   margin: 0px auto;
 }
 
+.post a {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .postHeader {
   font-weight: var(--font-weight-regular);
   display: grid;
@@ -45,8 +50,6 @@
 .imageStack {
   position: relative;
   width: 100%;
-  margin-top: auto;
-  margin-bottom: auto;
 }
 
 .landscape {
