@@ -10,7 +10,16 @@ export async function getAllPosts(): Promise<Post[]> {
       _createdAt,
       type,
       header,
-      images,
+      "images": images[] {
+        _key,
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
       moodType,
       dateUploaded,
       content,
@@ -18,7 +27,7 @@ export async function getAllPosts(): Promise<Post[]> {
     }
   `,
     {},
-    { next: { revalidate: 0 } } // Disable Next.js cache
+    { next: { revalidate: 0 } }
   );
 }
 
@@ -30,7 +39,16 @@ export async function getPostById(id: string): Promise<Post> {
       _createdAt,
       type,
       header,
-      images,
+      "images": images[] {
+        _key,
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
       moodType,
       dateUploaded,
       content,
@@ -51,7 +69,16 @@ export async function getPostsByType(
       _createdAt,
       type,
       header,
-      images,
+      "images": images[] {
+        _key,
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
       moodType,
       dateUploaded,
       content,

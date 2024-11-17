@@ -1,0 +1,89 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  gap: var(--spacing-lg);
+  grid-column: span 1;
+  padding: 0px 16px;
+}
+
+.postHeader {
+  font-weight: var(--font-weight-regular);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  align-self: flex-start;
+}
+
+.postHeader h2 {
+  font-weight: inherit;
+  font-size: inherit;
+  font-size: 16px;
+}
+
+.postHeader time {
+  color: var(--text-colour-muted);
+  font-size: 12px;
+}
+
+.imageStack {
+  position: relative;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.landscape {
+  max-width: 300px;
+  max-height: 200px;
+}
+
+.landscape img {
+  aspect-ratio: 3 / 2;
+  width: 100%;
+  height: 100%;
+}
+
+.portrait {
+  max-width: 200px;
+  max-height: 300px;
+  width: 100%;
+  height: auto;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 2 / 3;
+}
+
+.imageStack img {
+  position: absolute;
+  object-fit: cover;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition-speed);
+}
+
+.imageStack img:nth-child(1) {
+  position: relative; /* Base image */
+}
+
+.imageStack img:nth-child(2) {
+  transform: rotate(-4deg);
+}
+
+.imageStack img:nth-child(3) {
+  transform: rotate(4deg);
+}
+
+.imageStack:hover img:nth-child(2) {
+  transform: rotate(-8deg);
+}
+
+.imageStack:hover img:nth-child(3) {
+  transform: rotate(8deg);
+}

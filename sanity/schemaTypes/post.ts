@@ -129,18 +129,28 @@ export const post = defineType({
   },
 });
 
+export interface SanityImage {
+  _key: string;
+  asset: {
+    _ref: string;
+    _type: "reference";
+    url: string;
+    metadata: {
+      dimensions: {
+        aspectRatio: number;
+        height: number;
+        width: number;
+      };
+    };
+  };
+}
+
 export interface Post {
   _id: string;
   _createdAt: string;
   contentType: "regular" | "mood";
   header: string;
-  images: {
-    _key: string;
-    asset: {
-      _ref: string;
-      _type: "reference";
-    };
-  }[];
+  images: SanityImage[];
   moodType?: "happy" | "sad" | "excited" | "calm";
   dateUploaded: string;
   content: string;

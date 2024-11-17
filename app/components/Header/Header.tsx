@@ -1,12 +1,8 @@
 "use client";
 
-import { useMood } from "@/context/MoodContext";
 import styles from "./Header.module.css";
 
 export function Header() {
-  const { currentMoodColour } = useMood();
-
-  console.log(currentMoodColour);
   return (
     <header className={styles.header}>
       <nav>

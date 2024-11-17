@@ -35,8 +35,6 @@ export function MoodProvider({ children }: { children: React.ReactNode }) {
       )
       .find((post) => post.moodType);
 
-    console.log(latestPostWithMood);
-
     if (latestPostWithMood?.moodType) {
       const moodColour =
         moodColours[latestPostWithMood.moodType.toLowerCase()] ||
