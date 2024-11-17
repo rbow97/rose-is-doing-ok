@@ -1,12 +1,7 @@
 .grid {
   display: grid;
-  gap: var(--spacing-xl);
   width: 100%;
   row-gap: var(--spacing-xl);
-
-  @media (min-width: 768px) {
-    gap: var(--spacing-lg);
-  }
 }
 
 .columns4 {
@@ -15,6 +10,14 @@
 
 .columns6 {
   grid-template-columns: repeat(6, 1fr);
+}
+
+.gutter20 {
+  column-gap: var(--spacing-lg);
+}
+
+.gutter60 {
+  column-gap: 60px;
 }
 
 @media (max-width: 768px) {

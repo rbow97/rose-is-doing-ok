@@ -1,0 +1,91 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-space-grotesk);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  text-align: left;
+  padding: 0.5rem 1rem;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+.table td {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table thead th {
+  color: var(--text-colour-muted);
+}
+
+.table thead {
+  border-bottom: 1px solid var(--text-colour-muted);
+  margin-bottom: 8px;
+}
+
+.table thead tr,
+.table tbody tr {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 8px;
+  grid-template-columns: 1fr auto;
+}
+
+.table thead th,
+.table tbody td {
+  padding: 0;
+}
+
+.table tbody td:not(:first-child) {
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mood {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.tableRow {
+  cursor: pointer;
+}
+
+.imagePreviewContainer {
+  display: none;
+  grid-column-start: 4;
+  grid-column-end: 6;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.imagePreview {
+  width: 100%;
+  height: 100%;
+}
+
+/* Optional: add animation */
+.imagePreview img {
+  opacity: 0;
+  animation: fadeIn 0.2s forwards;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

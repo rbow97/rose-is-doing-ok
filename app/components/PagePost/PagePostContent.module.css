@@ -1,0 +1,19 @@
+.content {
+  grid-area: content;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.text h1 {
+  font-size: var(--font-size-xl);
+  font-weight: 300;
+}
+
+.text time {
+  font-size: var(--font-size-sm);
+  color: var(--text-colour-muted);
+}

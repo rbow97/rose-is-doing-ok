@@ -9,6 +9,7 @@ import Image from "next/image";
 import styles from "./Post.module.css";
 import { useMood } from "@/context/MoodContext";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface PostProps {
   post: Post;
@@ -28,27 +29,31 @@ export default function Post({ post }: PostProps) {
 
   return (
     <article className={styles.post} key={post._id}>
-      <div
-        className={`${styles.imageStack} ${firstImageAspectRatio >= 1 ? styles.landscape : styles.portrait}`}
-      >
-        {post.images?.map((image: SanityImage, index) => {
-          const aspectRatio = image.asset.metadata.dimensions.aspectRatio;
+      <Link href={`/post/${post._id}`}>
+        <div
+          className={`${styles.imageStack} ${firstImageAspectRatio >= 1 ? styles.landscape : styles.portrait}`}
+        >
+          {post.images?.map((image: SanityImage, index) => {
+            const aspectRatio = image.asset.metadata.dimensions.aspectRatio;
 
-          return (
-            <Image
-              key={image._key}
-              src={image.asset.url}
-              alt={`${post.header} ${index + 1}`}
-              width={aspectRatio >= 1 ? 300 : 200}
-              height={aspectRatio >= 1 ? 200 : 300}
-              className={styles.image}
-            />
-          );
-        })}
-      </div>
+            return (
+              <Image
+                key={image._key}
+                src={image.asset.url}
+                alt={`${post.header} ${index + 1}`}
+                width={aspectRatio >= 1 ? 300 : 200}
+                height={aspectRatio >= 1 ? 200 : 300}
+                className={styles.image}
+              />
+            );
+          })}
+        </div>
+      </Link>
 
       <div className={styles.postHeader}>
-        <h2>{post.header}</h2>
+        <Link href={`/post/${post._id}`}>
+          <h2>{post.header}</h2>
+        </Link>
         {post.contentType === ContentType.MOOD && (
           <span
             style={
