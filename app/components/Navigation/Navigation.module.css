@@ -1,0 +1,16 @@
+.navList {
+  display: flex;
+  gap: var(--spacing-md);
+  list-style: none;
+}
+
+.navItem {
+  cursor: pointer;
+  @media (min-width: 768px) {
+    font-size: var(--font-size-md);
+  }
+}
+
+.navItem a {
+  font-size: var(--font-size-sm);
+}

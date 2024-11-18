@@ -135,6 +135,7 @@ export interface SanityImage {
     _ref: string;
     _type: "reference";
     url: string;
+    lqip: string;
     metadata: {
       dimensions: {
         aspectRatio: number;

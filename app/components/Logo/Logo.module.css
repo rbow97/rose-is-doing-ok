@@ -1,0 +1,6 @@
+.logo {
+  font-size: var(--font-size-lg);
+  @media (min-width: 768px) {
+    font-size: var(--font-size-xl);
+  }
+}

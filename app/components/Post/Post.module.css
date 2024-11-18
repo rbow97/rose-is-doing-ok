@@ -16,37 +16,6 @@
   margin-bottom: auto;
 }
 
-.postHeader {
-  font-weight: var(--font-weight-regular);
-  display: grid;
-  width: 100%;
-  grid-template-areas: "header mood" "date date";
-  gap: var(--spacing-sm);
-  align-self: flex-start;
-}
-
-.postHeader h2 {
-  grid-area: header;
-  font-weight: inherit;
-  font-size: inherit;
-  font-size: 16px;
-}
-
-.postHeader span {
-  grid-area: mood;
-  height: 16px;
-  width: 16px;
-  border-radius: 999px;
-  margin: auto 0px auto auto;
-  background-color: var(--text-colour-muted);
-}
-
-.postHeader time {
-  grid-area: date;
-  color: var(--text-colour-muted);
-  font-size: 12px;
-}
-
 .imageStack {
   position: relative;
   width: 100%;

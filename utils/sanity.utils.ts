@@ -1,22 +1,33 @@
-import { client } from "@/sanity/lib/client";
+import { createClient } from "next-sanity";
 import { Post } from "@/sanity/schemaTypes/post";
 
+export const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION!,
+  useCdn: true,
+});
+
 export async function getAllPosts(): Promise<Post[]> {
-  return await client.fetch(
-    `
-    *[_type == "post"] | order(dateUploaded desc) {
+  return client.fetch(
+    `*[_type == "post"] {
       _id,
-      contentType,
       _createdAt,
-      type,
+      contentType,
       header,
-      "images": images[] {
+      "images": images[]{
         _key,
-        asset-> {
-          _id,
-          url,
-          metadata {
-            dimensions
+        "asset": {
+          "_ref": asset._ref,
+          "_type": asset._type,
+          "url": asset->url + "?w=1200&q=95",
+          "lqip": asset->metadata.lqip,
+          "metadata": {
+            "dimensions": {
+              "aspectRatio": asset->metadata.dimensions.aspectRatio,
+              "height": asset->metadata.dimensions.height,
+              "width": asset->metadata.dimensions.width
+            }
           }
         }
       },
@@ -24,28 +35,30 @@ export async function getAllPosts(): Promise<Post[]> {
       dateUploaded,
       content,
       song
-    }
-  `,
-    {},
-    { next: { revalidate: 0 } }
+    } | order(dateUploaded desc)`
   );
 }
 
 export async function getPostById(id: string): Promise<Post> {
-  return await client.fetch(
-    `
-    *[_type == "post" && _id == $id][0] {
+  return client.fetch(
+    `*[_type == "post" && _id == $id][0]{
       _id,
       _createdAt,
-      type,
+      contentType,
       header,
-      "images": images[] {
+      "images": images[]{
         _key,
-        asset-> {
-          _id,
-          url,
-          metadata {
-            dimensions
+        "asset": {
+          "_ref": asset._ref,
+          "_type": asset._type,
+          "url": asset->url + "?w=1200&q=95",
+          "lqip": asset->metadata.lqip,
+          "metadata": {
+            "dimensions": {
+              "aspectRatio": asset->metadata.dimensions.aspectRatio,
+              "height": asset->metadata.dimensions.height,
+              "width": asset->metadata.dimensions.width
+            }
           }
         }
       },
@@ -53,8 +66,7 @@ export async function getPostById(id: string): Promise<Post> {
       dateUploaded,
       content,
       song
-    }
-  `,
+    }`,
     { id }
   );
 }
@@ -62,7 +74,7 @@ export async function getPostById(id: string): Promise<Post> {
 export async function getPostsByType(
   type: "regular" | "mood"
 ): Promise<Post[]> {
-  return await client.fetch(
+  return client.fetch(
     `
     *[_type == "post" && type == $type] | order(dateUploaded desc) {
       _id,

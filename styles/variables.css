@@ -34,4 +34,16 @@
 
   /* Transitions */
   --transition-speed: 0.3s;
+
+  /* Page layout */
+  --header-height-mobile: 32px;
+  --header-height-desktop: 32px;
+  --page-padding-mobile: 16px;
+  --page-padding-desktop: 32px;
+
+  /* Image sizes */
+  --image-border-radius: 4px;
+
+  /* Media query breakpoints */
+  --breakpoint-mobile: 768px;
 }

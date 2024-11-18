@@ -2,14 +2,7 @@
   display: grid;
   width: 100%;
   row-gap: var(--spacing-xl);
-}
-
-.columns4 {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.columns6 {
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 1fr;
 }
 
 .gutter20 {
@@ -20,8 +13,12 @@
   column-gap: 60px;
 }
 
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
+@media (min-width: 768px) {
+  .columns4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .columns6 {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
