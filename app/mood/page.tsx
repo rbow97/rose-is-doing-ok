@@ -4,6 +4,8 @@ import { Grid } from "../components/Grid/Grid";
 import { MoodTable } from "../components/MoodTable/MoodTable";
 import styles from "./page.module.css";
 
+export const revalidate = 0;
+
 export default async function MoodPage() {
   const posts = await getAllPosts();
 
