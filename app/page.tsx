@@ -3,6 +3,8 @@ import { Grid } from "./components/Grid/Grid";
 import Post from "./components/Post/Post";
 import styles from "./page.module.css";
 
+export const revalidate = 0;
+
 export default async function Home() {
   const posts = await getAllPosts();
 
