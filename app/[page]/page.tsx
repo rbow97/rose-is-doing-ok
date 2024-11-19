@@ -6,11 +6,14 @@ export function generateStaticParams() {
   return [{ page: "index" }];
 }
 
-export default async function DynamicPage({
-  params,
-}: {
-  params: { page: string };
-}) {
+type Params = Promise<{ page: string }>;
+
+type Props = {
+  params: Params;
+};
+
+export default async function DynamicPage(props: Props) {
+  const params = await props.params;
   const posts = await getAllPosts();
 
   if (params.page === "index") {
