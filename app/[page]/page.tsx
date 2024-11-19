@@ -1,5 +1,5 @@
 import { getAllPosts } from "@/utils/sanity.utils";
-import { IndexPageTables } from "../components/IndexPageTables/IndexPageTables";
+import { IndexPageTables } from "../components/CataloguePageTables/CataloguePageTables";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {

@@ -12,20 +12,20 @@ interface NavItemProps {
 
 export function Navigation() {
   const pathname = usePathname();
-  
+
   const navItems = [
     { label: "Mood", href: "/mood" },
-    { label: "Index", href: "/index" },
+    { label: "Catalogue", href: "/catalogue" },
     { label: "About", href: "/about" },
   ];
 
   return (
     <ul className={styles.navList}>
       {navItems.map(({ label, href }) => (
-        <NavItem 
-          key={href} 
-          href={href} 
-          label={label} 
+        <NavItem
+          key={href}
+          href={href}
+          label={label}
           isActive={pathname === href}
         />
       ))}
@@ -36,9 +36,9 @@ export function Navigation() {
 function NavItem({ href, label, isActive }: NavItemProps) {
   return (
     <li className={styles.navItem}>
-      <Link 
-        href={href} 
-        className={`${isActive ? styles.active : ''} underline`}
+      <Link
+        href={href}
+        className={`${isActive ? styles.active : ""} underline`}
       >
         {label}
       </Link>

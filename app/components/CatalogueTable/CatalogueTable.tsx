@@ -5,7 +5,7 @@ interface GroupedPosts {
   [year: string]: Post[];
 }
 
-interface IndexTableProps {
+interface CatalogueTableProps {
   posts: Post[];
   onPostClick: (id: string) => void;
   onHover?: (image: string | null) => void;
@@ -31,12 +31,12 @@ function getFirstImageUrl(post: Post): string | null {
   return post.images?.[0]?.asset.url || null;
 }
 
-export function IndexTable({
+export function CatalogueTable({
   posts,
   onPostClick,
   onHover,
   className,
-}: IndexTableProps) {
+}: CatalogueTableProps) {
   const groupedPosts = groupPostsByYear(posts);
 
   return (
