@@ -1,49 +1,65 @@
 "use client";
 import clsx from "clsx";
-import { useState } from "react";
+import { ReactNode } from "react";
 import styles from "./Table.module.css";
-import { TableRow } from "./TableRow";
-import { ImagePreview } from "../ImagePreview/ImagePreview";
 
-interface TableProps {
-  entries: {
-    date: string;
-    id: string;
-    mood: { color: string; image?: string };
-  }[];
+// Base Table Components
+interface TableRootProps {
+  children: ReactNode;
   className?: string;
 }
 
-export function Table({ entries, className }: TableProps) {
-  const [hoveredImage, setHoveredImage] = useState<string | null>(null);
-
-  return (
-    <>
-      <table className={clsx(styles.table, className)}>
-        <TableHeader />
-        <tbody>
-          {entries.map((entry) => (
-            <TableRow
-              key={entry.date}
-              entry={entry}
-              onHover={setHoveredImage}
-            />
-          ))}
-        </tbody>
-      </table>
-
-      <ImagePreview image={hoveredImage} />
-    </>
-  );
+export function Table({ children, className }: TableRootProps) {
+  return <table className={clsx(styles.table, className)}>{children}</table>;
 }
 
-function TableHeader() {
-  return (
-    <thead>
-      <tr>
-        <th className={styles.header}>Date</th>
-        <th className={styles.header}>Mood</th>
-      </tr>
-    </thead>
-  );
+// Header Components
+interface TableHeaderProps {
+  children: ReactNode;
 }
+
+Table.Header = function TableHeader({ children }: TableHeaderProps) {
+  return <thead>{children}</thead>;
+};
+
+Table.HeaderRow = function TableHeaderRow({ children }: TableHeaderProps) {
+  return <tr>{children}</tr>;
+};
+
+Table.HeaderCell = function TableHeaderCell({ children }: TableHeaderProps) {
+  return <th className={styles.header}>{children}</th>;
+};
+
+// Body Components
+Table.Body = function TableBody({ children }: TableHeaderProps) {
+  return <tbody>{children}</tbody>;
+};
+
+interface TableRowProps {
+  children: ReactNode;
+  onHover?: () => void;
+  onLeave?: () => void;
+  onClick?: () => void;
+}
+
+Table.Row = function TableRow({
+  children,
+  onHover,
+  onLeave,
+  onClick,
+}: TableRowProps) {
+  return (
+    <tr
+      className={styles.tableRow}
+      onClick={() => onClick?.()}
+      onMouseEnter={() => onHover?.()}
+      onMouseLeave={() => onLeave?.()}
+    >
+      {children}
+    </tr>
+  );
+};
+
+Table.Cell = function TableCell({ children }: TableHeaderProps) {
+  return <td>{children}</td>;
+};

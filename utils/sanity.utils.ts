@@ -1,12 +1,5 @@
-import { createClient } from "next-sanity";
+import { client } from "@/sanity/lib/client";
 import { Post } from "@/sanity/schemaTypes/post";
-
-export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION!,
-  useCdn: true,
-});
 
 export async function getAllPosts(): Promise<Post[]> {
   return client.fetch(

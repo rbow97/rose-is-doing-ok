@@ -11,7 +11,9 @@ export function PagePostContent({ post }: { post: Post }) {
     <div className={styles.content}>
       <div className={styles.text}>
         <h1>{post.header}</h1>
+        <div>
         <time>{formattedDate}</time>
+        </div>
       </div>
     </div>
   );

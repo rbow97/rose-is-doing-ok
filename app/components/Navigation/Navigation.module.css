@@ -14,3 +14,10 @@
 .navItem a {
   font-size: var(--font-size-sm);
 }
+
+.active {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--current-mood-colour);
+  text-underline-offset: 4px;
+}

@@ -1,8 +1,8 @@
-import { Table } from "../components/Table/Table";
 import { Post } from "@/sanity/schemaTypes/post";
-import styles from "./page.module.css";
-import { Grid } from "../components/Grid/Grid";
 import { getAllPosts } from "@/utils/sanity.utils";
+import { Grid } from "../components/Grid/Grid";
+import { MoodTable } from "../components/MoodTable/MoodTable";
+import styles from "./page.module.css";
 
 export default async function MoodPage() {
   const posts = await getAllPosts();
@@ -46,7 +46,7 @@ export default async function MoodPage() {
   return (
     <section className={styles.container}>
       <Grid columns={6}>
-        <Table entries={entries} className={styles.table} />
+        <MoodTable entries={entries} className={styles.table} />
       </Grid>
     </section>
   );
