@@ -1,9 +1,9 @@
 .container {
   grid-template-areas: "image" "content";
-  height: 100%;
   padding-top: 120px;
 
   @media (min-width: 768px) {
+    height: 100%;
     grid-template-areas: "image image image content content content";
     padding-top: 0px;
   }
@@ -47,13 +47,13 @@
 }
 
 .image img {
-  margin-top: 220px;
   width: 100%;
   height: fit-content;
   max-height: calc(100vh - 120px - 100px);
   object-fit: contain;
 
   @media (min-width: 768px) {
+    margin-top: 220px;
     max-height: calc(100vh - 220px - 200px);
   }
 }

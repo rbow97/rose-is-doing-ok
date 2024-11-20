@@ -1,11 +1,7 @@
 "use client";
 
 import { useFormattedDate } from "@/app/hooks/useFormattedDate";
-import {
-  ContentType,
-  type Post,
-  type SanityImage,
-} from "@/sanity/schemaTypes/post";
+import { type Post, type SanityImage } from "@/sanity/schemaTypes/post";
 import Link from "next/link";
 import { PostHeader } from "../PostHeader/PostHeader";
 import { ResponsiveImage } from "../ResponsiveImage/ResponsiveImage";
@@ -42,9 +38,7 @@ export default function Post({ post }: PostProps) {
         id={post._id}
         title={post.header}
         date={formattedDate}
-        moodType={
-          post.contentType === ContentType.MOOD ? post.moodType : undefined
-        }
+        moodType={post.moodType ? post.moodType : undefined}
       />
     </article>
   );

@@ -1,0 +1,6 @@
+<svg shape-rendering="geometricPrecision" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="8" cy="8" r="8" fill="#FEEBC1"/>
+<line x1="4.50012" y1="4.5" x2="4.50012" y2="7.5" stroke="#2A321B" stroke-linecap="round"/>
+<path d="M4.5 10.5C7.23349 12.7741 10 12 11.5 10.5" stroke="#2A321B" stroke-linecap="round"/>
+<line x1="11.1667" y1="4.5" x2="11.1667" y2="7.5" stroke="#2A321B" stroke-linecap="round"/>
+</svg>

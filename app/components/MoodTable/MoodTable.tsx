@@ -5,12 +5,14 @@ import { Table } from "../Table/Table";
 import { useState } from "react";
 import { ImagePreview } from "../ImagePreview/ImagePreview";
 import styles from "./MoodTable.module.css";
+import { MoodType } from "@/sanity/schemaTypes/post";
+import Image from "next/image";
 
 interface MoodTableProps {
   entries: {
     date: string;
     id: string;
-    mood: { color: string; image?: string };
+    mood: { type: MoodType; image?: string };
   }[];
   className?: string;
 }
@@ -38,7 +40,7 @@ export function MoodTable({ entries, className }: MoodTableProps) {
               <Table.Cell>{entry.date}</Table.Cell>
               <Table.Cell>
                 {" "}
-                <MoodIndicator color={entry.mood.color} />
+                <MoodIndicator moodType={entry.mood.type} />
               </Table.Cell>
             </Table.Row>
           ))}
@@ -53,13 +55,14 @@ export function MoodTable({ entries, className }: MoodTableProps) {
   );
 }
 
-function MoodIndicator({ color }: { color: string }) {
+function MoodIndicator({ moodType }: { moodType: MoodType }) {
   return (
-    <span
+    <Image
+      src={`/moods/${moodType}.svg`}
+      alt={moodType}
+      width={16}
+      height={16}
       className={styles.mood}
-      style={{ backgroundColor: color }}
-      role="img"
-      aria-label="Mood indicator"
     />
   );
 }

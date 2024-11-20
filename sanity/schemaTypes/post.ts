@@ -6,19 +6,6 @@ export const post = defineType({
   type: "document",
   fields: [
     defineField({
-      name: "contentType",
-      title: "Content Type",
-      type: "string",
-      options: {
-        list: [
-          { title: "Regular Post", value: "regular" },
-          { title: "Mood Post", value: "mood" },
-        ],
-        layout: "radio",
-      },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: "header",
       title: "Header",
       type: "string",
@@ -36,20 +23,7 @@ export const post = defineType({
           },
         },
       ],
-      validation: (Rule) =>
-        Rule.custom((images, context) => {
-          const { document } = context;
-          if (document?.contentType === "mood" && images && images.length > 1) {
-            return "Mood entries can only have one image";
-          }
-          if (
-            document?.contentType === "mood" &&
-            (!images || images.length === 0)
-          ) {
-            return "Mood entries require one image";
-          }
-          return true;
-        }),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "moodType",
@@ -59,24 +33,15 @@ export const post = defineType({
         list: [
           { title: "Happy", value: "happy" },
           { title: "Sad", value: "sad" },
-          { title: "Excited", value: "excited" },
+          { title: "Neutral", value: "neutral" },
           { title: "Calm", value: "calm" },
         ],
       },
-      hidden: ({ document }) => document?.contentType !== "mood",
-      validation: (Rule) =>
-        Rule.custom((moodType, context) => {
-          const { document } = context;
-          if (document?.contentType === "mood" && !moodType) {
-            return "Mood type is required for mood entries";
-          }
-          return true;
-        }),
     }),
     defineField({
       name: "dateUploaded",
       title: "Date Uploaded",
-      type: "date",
+      type: "datetime",
       initialValue: () => new Date().toISOString(),
     }),
     defineField({
@@ -116,13 +81,13 @@ export const post = defineType({
   preview: {
     select: {
       title: "header",
-      type: "contentType",
+      mood: "moodType",
       media: "images.0",
     },
-    prepare({ title, type, media }) {
+    prepare({ title, mood, media }) {
       return {
         title: title || "Untitled",
-        subtitle: type === "mood" ? "🎭 Mood Entry" : "📝 Post Entry",
+        subtitle: mood ? `Mood: ${mood}` : "Post Entry",
         media: media,
       };
     },
@@ -147,18 +112,14 @@ export interface SanityImage {
   };
 }
 
-export enum ContentType {
-  REGULAR = "regular",
-  MOOD = "mood",
-}
+export type MoodType = "happy" | "sad" | "calm" | "neutral";
 
 export interface Post {
   _id: string;
   _createdAt: string;
-  contentType: ContentType;
   header: string;
   images: SanityImage[];
-  moodType?: "happy" | "sad" | "excited" | "calm";
+  moodType?: MoodType;
   dateUploaded: string;
   content: string;
   song?: {

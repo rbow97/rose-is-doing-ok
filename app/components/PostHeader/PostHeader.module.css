@@ -14,13 +14,17 @@
   font-size: 16px;
 }
 
-.postHeader span {
+.moodIndicator {
   grid-area: mood;
-  height: 16px;
-  width: 16px;
+  height: 12px;
+  width: 12px;
   border-radius: 999px;
   margin: auto 0px auto auto;
-  background-color: var(--text-colour-muted);
+
+  @media (min-width: 768px) {
+    height: 16px;
+    width: 16px;
+  }
 }
 
 .postHeader time {
