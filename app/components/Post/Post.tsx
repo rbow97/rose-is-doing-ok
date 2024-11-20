@@ -27,11 +27,13 @@ export default function Post({ post }: PostProps) {
   const aspectRatio = firstImage?.asset?.metadata?.dimensions?.aspectRatio ?? 1;
   const isLandscape = aspectRatio >= 1;
 
+  const reversedImages = [...post.images].reverse();
+
   return (
     <article className={styles.post} key={post._id}>
       <PostLink id={post._id}>
         <ImageStack
-          images={post.images}
+          images={reversedImages}
           isLandscape={isLandscape}
           header={post.header}
         />
