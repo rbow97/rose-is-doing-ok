@@ -14,12 +14,10 @@ export default async function Home() {
   );
 
   return (
-    <main>
-      <Grid className={styles.container}>
-        {sortedPosts.map((post) => (
-          <Post key={post._id} post={post} />
-        ))}
-      </Grid>
-    </main>
+    <Grid className={styles.container}>
+      {sortedPosts.map((post) => (
+        <Post key={post._id} post={post} />
+      ))}
+    </Grid>
   );
 }

@@ -1,15 +1,22 @@
 import Link from "next/link";
 import styles from "./Logo.module.css";
+import { DynamicHeader } from "@/sanity/schemaTypes/dynamicHeader";
 
-export function Logo() {
+interface LogoProps {
+  dynamicText: DynamicHeader;
+  defaultText?: string;
+}
+
+export function Logo({ dynamicText, defaultText = "doing ok" }: LogoProps) {
   return (
     <h1 className={styles.logo}>
       <Link className="underline" href="/">
         Rose
       </Link>{" "}
       is{" "}
-      <Link className="underline" href="/roseis">
-        doing ok
+      <Link className="underline" href="/rose-is">
+        {dynamicText.replacableText}
+        <span className={styles.dynamicText}>{defaultText}</span>
       </Link>
     </h1>
   );

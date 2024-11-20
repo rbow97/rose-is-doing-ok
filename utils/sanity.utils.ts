@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client";
+import { DynamicHeader } from "@/sanity/schemaTypes/dynamicHeader";
 import { Post } from "@/sanity/schemaTypes/post";
 
 export async function getAllPosts(): Promise<Post[]> {
@@ -91,5 +92,25 @@ export async function getPostsByType(
     }
   `,
     { type }
+  );
+}
+
+export async function getMostRecentDynamicHeader(): Promise<DynamicHeader> {
+  return client.fetch(
+    `*[_type == "dynamicHeader"][0]{
+      _id,
+      _createdAt,
+      replacableText
+    }`
+  );
+}
+
+export async function getDynamicHeaders(): Promise<DynamicHeader[]> {
+  return client.fetch(
+    `*[_type == "dynamicHeader"] {
+      _id,
+      _createdAt,
+      replacableText
+    } | order(_createdAt desc)`
   );
 }

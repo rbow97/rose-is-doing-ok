@@ -1,10 +1,10 @@
+import { MoodProvider } from "@/context/MoodContext";
+import "@/styles/global.css";
+import { getAllPosts } from "@/utils/sanity.utils";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "@/styles/global.css";
-import { Header } from "./components/Header/Header";
 import { Container } from "./components/Container/Container";
-import { MoodProvider } from "@/context/MoodContext";
-import { getAllPosts } from "@/utils/sanity.utils";
+import { Header } from "./components/Header/Header";
 import { MoodInitializer } from "./components/MoodInitializer";
 
 const spaceGrotesk = localFont({
@@ -59,7 +59,9 @@ export default async function RootLayout({
         <MoodProvider>
           <MoodInitializer posts={posts} />
           <Header />
-          <Container>{children}</Container>
+          <main>
+            <Container>{children}</Container>
+          </main>
         </MoodProvider>
       </body>
     </html>

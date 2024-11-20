@@ -4,14 +4,15 @@ export const dynamicHeader = {
   type: "document",
   fields: [
     {
-      name: "prefix",
-      title: 'Prefix Text (e.g., "rose is")',
-      type: "string",
-    },
-    {
       name: "replacableText",
       title: "Replaceable Text",
       type: "string",
     },
   ],
 };
+
+export interface DynamicHeader {
+  replacableText: string;
+  _id: string;
+  _createdAt: string;
+}
