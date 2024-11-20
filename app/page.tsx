@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/utils/sanity.utils";
+import { fetchPostsSafely } from "@/utils/utils";
 import { Grid } from "./components/Grid/Grid";
 import Post from "./components/Post/Post";
 import styles from "./page.module.css";
@@ -6,7 +6,10 @@ import styles from "./page.module.css";
 export const revalidate = 0;
 
 export default async function Home() {
-  const posts = await getAllPosts();
+  const { data: posts, error } = await fetchPostsSafely();
+
+  if (error) return <div>Failed to load posts</div>;
+  if (!posts?.length) return <div>No posts found</div>;
 
   const sortedPosts = [...posts].sort(
     (a, b) =>

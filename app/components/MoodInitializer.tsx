@@ -1,15 +1,22 @@
 "use client";
 
-import { useEffect } from "react";
 import { useMood } from "@/context/MoodContext";
-import { Post } from "@/sanity/schemaTypes/post";
+import { fetchPostsSafely } from "@/utils/utils";
+import { useEffect } from "react";
 
-export function MoodInitializer({ posts }: { posts: Post[] }) {
+export function MoodInitializer() {
   const { updateMoodFromPosts } = useMood();
 
   useEffect(() => {
-    updateMoodFromPosts(posts);
-  }, [posts, updateMoodFromPosts]);
+    async function initializeMoods() {
+      const { data: posts, error } = await fetchPostsSafely();
+      if (!error && posts) {
+        updateMoodFromPosts(posts);
+      }
+    }
+
+    initializeMoods();
+  }, [updateMoodFromPosts]);
 
   return null;
 }

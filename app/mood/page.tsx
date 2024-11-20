@@ -1,5 +1,5 @@
 import { MoodType, Post } from "@/sanity/schemaTypes/post";
-import { getAllPosts } from "@/utils/sanity.utils";
+import { fetchPostsSafely } from "@/utils/utils";
 import { Grid } from "../components/Grid/Grid";
 import { MoodTable } from "../components/MoodTable/MoodTable";
 import styles from "./page.module.css";
@@ -7,7 +7,10 @@ import styles from "./page.module.css";
 export const revalidate = 0;
 
 export default async function MoodPage() {
-  const posts = await getAllPosts();
+  const { data: posts, error } = await fetchPostsSafely();
+
+  if (error) return <div>Failed to load mood data</div>;
+  if (!posts?.length) return <div>No mood data found</div>;
 
   // Filter posts with mood type and group by date
   const moodsByDate = posts

@@ -1,6 +1,5 @@
 import { MoodProvider } from "@/context/MoodContext";
 import "@/styles/global.css";
-import { getAllPosts } from "@/utils/sanity.utils";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Container } from "./components/Container/Container";
@@ -51,13 +50,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const posts = await getAllPosts();
-
   return (
     <html lang="en">
       <body className={spaceGrotesk.className}>
         <MoodProvider>
-          <MoodInitializer posts={posts} />
+          <MoodInitializer />
           <Header />
           <main>
             <Container>{children}</Container>
