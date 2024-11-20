@@ -1,4 +1,5 @@
 "use client";
+
 import clsx from "clsx";
 import { ReactNode } from "react";
 import styles from "./Table.module.css";

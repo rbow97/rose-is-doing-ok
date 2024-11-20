@@ -65,6 +65,18 @@ export async function getPostById(id: string): Promise<Post> {
   );
 }
 
+export async function getMostRecentMood(): Promise<string | null> {
+  return client
+    .fetch(
+      `*[_type == "post" && defined(moodType)] | order(dateUploaded desc)[0] {
+        moodType
+      }`
+    )
+    .then((result) => result?.moodType?.toLowerCase() || null);
+}
+
+
+
 export async function getPostsByType(
   type: "regular" | "mood"
 ): Promise<Post[]> {

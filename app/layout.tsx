@@ -1,4 +1,3 @@
-import { MoodProvider } from "@/context/MoodContext";
 import "@/styles/global.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -53,13 +52,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={spaceGrotesk.className}>
-        <MoodProvider>
-          <MoodInitializer />
-          <Header />
-          <main>
-            <Container>{children}</Container>
-          </main>
-        </MoodProvider>
+        <MoodInitializer />
+        <Header />
+        <main>
+          <Container>{children}</Container>
+        </main>
       </body>
     </html>
   );

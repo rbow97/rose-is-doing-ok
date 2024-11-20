@@ -1,22 +1,31 @@
 "use client";
 
-import { useMood } from "@/context/MoodContext";
-import { fetchPostsSafely } from "@/utils/utils";
+import { fetchMostRecentMood } from "@/utils/utils";
 import { useEffect } from "react";
 
-export function MoodInitializer() {
-  const { updateMoodFromPosts } = useMood();
+const moodColours = {
+  happy: "var(--mood-happy)",
+  sad: "var(--mood-sad)",
+  calm: "var(--mood-calm)",
+  neutral: "var(--mood-neutral)",
+};
 
+export function MoodInitializer() {
   useEffect(() => {
-    async function initializeMoods() {
-      const { data: posts, error } = await fetchPostsSafely();
-      if (!error && posts) {
-        updateMoodFromPosts(posts);
-      }
+    async function setMoodColour() {
+      const { data: mood } = await fetchMostRecentMood();
+      if (!mood) return;
+
+      const moodColour =
+        moodColours[mood as keyof typeof moodColours] || moodColours.neutral;
+      document.documentElement.style.setProperty(
+        "--current-mood-colour",
+        moodColour
+      );
     }
 
-    initializeMoods();
-  }, [updateMoodFromPosts]);
+    setMoodColour();
+  }, []);
 
   return null;
 }
