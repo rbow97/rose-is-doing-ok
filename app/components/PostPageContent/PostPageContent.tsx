@@ -111,7 +111,11 @@ export function PostPageContent(props: PostPageContentProps) {
           );
         })}
       </div>
-      <PagePostContent post={post} className={styles.content} />
+      <PagePostContent
+        moodType={post.moodType}
+        post={post}
+        className={styles.content}
+      />
     </Grid>
   );
 }
