@@ -68,6 +68,11 @@
     width: 100%;
     padding: 0;
 
+    &:not(:last-child) {
+      padding-left: 0px;
+      justify-content: center;
+    }
+
     &:last-child {
       padding-right: 0px;
     }
