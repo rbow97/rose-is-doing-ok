@@ -31,6 +31,7 @@
 }
 
 .polaroidWrapper {
+  margin: auto;
   position: absolute;
   inset: 0;
   background: white;

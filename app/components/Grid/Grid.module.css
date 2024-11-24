@@ -5,6 +5,14 @@
   grid-template-columns: 1fr;
 }
 
+.rowGaplg {
+  row-gap: var(--spacing-lg);
+}
+
+.rowGapxl {
+  row-gap: var(--spacing-xl);
+}
+
 .gutter20 {
   column-gap: var(--spacing-md);
 }
@@ -29,6 +37,15 @@
   .grid {
     row-gap: var(--spacing-xl);
   }
+
+  .rowGaplg {
+    row-gap: var(--spacing-xl);
+  }
+
+  .rowGapxl {
+    row-gap: var(--spacing-xxl);
+  }
+
   .columns3 {
     grid-template-columns: repeat(4, 1fr);
   }
