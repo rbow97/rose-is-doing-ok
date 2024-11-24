@@ -21,37 +21,66 @@ export function PostPageContent(props: PostPageContentProps) {
     const handleScroll = (event: WheelEvent) => {
       if (!imagesRef.current) return;
 
-      // Check if we're on mobile (based on viewport width)
+      event.preventDefault();
       const isMobile = window.innerWidth < 768;
+      const container = imagesRef.current;
+
+      // Get the scroll amount
+      const delta = event.deltaY;
 
       if (isMobile) {
-        // Horizontal scroll for mobile
-        event.preventDefault();
-        imagesRef.current.scrollBy({
-          left: event.deltaY,
+        // Calculate the next snap point
+        const currentScroll = container.scrollLeft;
+        const itemWidth = container.offsetWidth;
+        const direction = delta > 0 ? 1 : -1;
+
+        container.scrollTo({
+          left: currentScroll + direction * itemWidth,
           behavior: "smooth",
         });
       } else {
-        // Vertical scroll for desktop
-        imagesRef.current.scrollBy({
-          top: event.deltaY,
+        // Calculate the next snap point
+        const currentScroll = container.scrollTop;
+        const itemHeight = container.offsetHeight;
+        const direction = delta > 0 ? 1 : -1;
+
+        container.scrollTo({
+          top: currentScroll + direction * itemHeight,
           behavior: "smooth",
         });
       }
     };
 
-    // Handle touch events for mobile
-    const handleTouchMove = () => {
-      if (!imagesRef.current || window.innerWidth >= 768) return;
-      // Mobile touch handling logic here if needed
+    // Add touch handling for mobile
+    let touchStart = 0;
+    let touchEnd = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStart = e.changedTouches[0].screenX;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (!imagesRef.current) return;
+
+      touchEnd = e.changedTouches[0].screenX;
+      const container = imagesRef.current;
+      const direction = touchStart > touchEnd ? 1 : -1;
+      const itemWidth = container.offsetWidth;
+
+      container.scrollTo({
+        left: container.scrollLeft + direction * itemWidth,
+        behavior: "smooth",
+      });
     };
 
     window.addEventListener("wheel", handleScroll, { passive: false });
-    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchend", handleTouchEnd);
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
-      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
   }, []);
 
