@@ -13,7 +13,7 @@ interface PostPageContentProps {
 }
 
 export function PostPageContent(props: PostPageContentProps) {
-  const { post, isLandscape } = props;
+  const { post } = props;
   const images = post.images;
   const imagesRef = useRef<HTMLDivElement | null>(null);
 
@@ -58,19 +58,29 @@ export function PostPageContent(props: PostPageContentProps) {
   return (
     <Grid gutter={60} columns={6} className={styles.container}>
       <div className={styles.images} ref={imagesRef}>
-        {images.map((image) => (
-          <div key={image._key} className={styles.image}>
-            <Image
-              src={image.asset.url}
-              alt={image.asset.alt || "image"}
-              width={isLandscape ? 1200 : 800}
-              height={isLandscape ? 800 : 1200}
-              quality={95}
-              priority
-              className={styles.featuredImage}
-            />
-          </div>
-        ))}
+        {images.map((image) => {
+          const aspectRatio =
+            image.asset?.metadata?.dimensions?.aspectRatio ?? 1;
+          const isLandscape = aspectRatio >= 1;
+
+          return (
+            <div key={image._key} className={styles.image}>
+              <div
+                className={`${styles.polaroidWrapper} ${isLandscape ? styles.landscape : styles.portrait}`}
+              >
+                <Image
+                  src={image.asset.url}
+                  alt={image.asset.alt || "image"}
+                  width={isLandscape ? 1200 : 800}
+                  height={isLandscape ? 800 : 1200}
+                  quality={95}
+                  priority
+                  className={styles.featuredImage}
+                />
+              </div>
+            </div>
+          );
+        })}
       </div>
       <PagePostContent post={post} className={styles.content} />
     </Grid>
