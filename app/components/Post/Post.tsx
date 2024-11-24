@@ -52,7 +52,9 @@ function ImageStack({ images, header, date, moodType }: ImageStackProps) {
         const isLandscape = aspectRatio >= 1;
 
         return (
-          <div key={image._key} className={styles.polaroidWrapper}>
+          <div key={image._key} 
+          className={`${styles.polaroidWrapper} ${isLandscape ? styles.landscape : styles.portrait}`}
+         >
             <div
               key={image._key}
               className={`${styles.imageContainer} ${isLandscape ? styles.landscape : styles.portrait}`}

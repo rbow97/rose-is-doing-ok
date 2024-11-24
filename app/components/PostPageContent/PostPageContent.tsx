@@ -1,10 +1,12 @@
 "use client";
 
-import { Post } from "@/sanity/schemaTypes/post";
+import { useFormattedDate } from "@/app/hooks/useFormattedDate";
+import { useScrollSnap } from "@/app/hooks/useScrollSnap";
+import { MoodType, Post } from "@/sanity/schemaTypes/post";
+import clsx from "clsx";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Grid } from "../Grid/Grid";
-import { PagePostContent } from "../PagePost/PagePostCotent";
 import styles from "./PostPageContent.module.css";
 
 interface PostPageContentProps {
@@ -17,72 +19,7 @@ export function PostPageContent(props: PostPageContentProps) {
   const images = post.images;
   const imagesRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const handleScroll = (event: WheelEvent) => {
-      if (!imagesRef.current) return;
-
-      event.preventDefault();
-      const isMobile = window.innerWidth < 768;
-      const container = imagesRef.current;
-
-      // Get the scroll amount
-      const delta = event.deltaY;
-
-      if (isMobile) {
-        // Calculate the next snap point
-        const currentScroll = container.scrollLeft;
-        const itemWidth = container.offsetWidth;
-        const direction = delta > 0 ? 1 : -1;
-
-        container.scrollTo({
-          left: currentScroll + direction * itemWidth,
-          behavior: "smooth",
-        });
-      } else {
-        // Calculate the next snap point
-        const currentScroll = container.scrollTop;
-        const itemHeight = container.offsetHeight;
-        const direction = delta > 0 ? 1 : -1;
-
-        container.scrollTo({
-          top: currentScroll + direction * itemHeight,
-          behavior: "smooth",
-        });
-      }
-    };
-
-    // Add touch handling for mobile
-    let touchStart = 0;
-    let touchEnd = 0;
-
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStart = e.changedTouches[0].screenX;
-    };
-
-    const handleTouchEnd = (e: TouchEvent) => {
-      if (!imagesRef.current) return;
-
-      touchEnd = e.changedTouches[0].screenX;
-      const container = imagesRef.current;
-      const direction = touchStart > touchEnd ? 1 : -1;
-      const itemWidth = container.offsetWidth;
-
-      container.scrollTo({
-        left: container.scrollLeft + direction * itemWidth,
-        behavior: "smooth",
-      });
-    };
-
-    window.addEventListener("wheel", handleScroll, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart);
-    window.addEventListener("touchend", handleTouchEnd);
-
-    return () => {
-      window.removeEventListener("wheel", handleScroll);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
-    };
-  }, []);
+  useScrollSnap(imagesRef);
 
   return (
     <Grid gutter={60} columns={6} className={styles.container}>
@@ -111,11 +48,37 @@ export function PostPageContent(props: PostPageContentProps) {
           );
         })}
       </div>
-      <PagePostContent
-        moodType={post.moodType}
-        post={post}
-        className={styles.content}
-      />
+      <PostPageText post={post} moodType={post.moodType} />
     </Grid>
+  );
+}
+
+export function PostPageText({
+  post,
+  moodType,
+  className,
+}: {
+  post: Post;
+  moodType?: MoodType;
+  className?: string;
+}) {
+  const formattedDate = useFormattedDate(post.dateUploaded);
+
+  return (
+    <section className={clsx(className, styles.textContainer)}>
+      <div className={styles.headerContainer}>
+        <h1 className={styles.header}>{post.header}</h1>
+        <time className={styles.time}>{formattedDate}</time>
+        {moodType && (
+          <Image
+            className={styles.mood}
+            src={`/moods/${moodType}.svg`}
+            alt={moodType}
+            width={16}
+            height={16}
+          />
+        )}
+      </div>
+    </section>
   );
 }
