@@ -17,7 +17,7 @@ export default async function Home() {
   );
 
   return (
-    <Grid className={styles.container}>
+    <Grid gutter={60} columns={3} className={styles.container}>
       {sortedPosts.map((post) => (
         <Post key={post._id} post={post} />
       ))}

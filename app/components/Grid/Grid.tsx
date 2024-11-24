@@ -2,7 +2,7 @@ import styles from "./Grid.module.css";
 
 interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
-  columns?: 4 | 6;
+  columns?: 3 | 4 | 6;
   gutter?: 20 | 60;
   className?: string;
 }

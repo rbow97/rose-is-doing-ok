@@ -14,11 +14,19 @@
 }
 
 @media (min-width: 768px) {
+  .columns3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
   .columns4 {
     grid-template-columns: repeat(4, 1fr);
   }
-
   .columns6 {
     grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .columns3 {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
