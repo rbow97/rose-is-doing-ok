@@ -1,10 +1,8 @@
 "use client";
 
-import { useFormattedDate } from "@/app/hooks/useFormattedDate";
 import { type Post, type SanityImage } from "@/sanity/schemaTypes/post";
 import Image from "next/image";
 import Link from "next/link";
-import { PostHeader } from "../PostHeader/PostHeader";
 import styles from "./Post.module.css";
 
 interface PostProps {
@@ -17,8 +15,6 @@ interface ImageStackProps {
 }
 
 export default function Post({ post }: PostProps) {
-  const formattedDate = useFormattedDate(post.dateUploaded);
-
   const reversedImages = [...post.images].reverse();
 
   return (
@@ -26,12 +22,6 @@ export default function Post({ post }: PostProps) {
       <PostLink id={post._id}>
         <ImageStack images={reversedImages} header={post.header} />
       </PostLink>
-      {/* <PostHeader
-        id={post._id}
-        title={post.header}
-        date={formattedDate}
-        moodType={post.moodType ? post.moodType : undefined}
-      /> */}
     </article>
   );
 }
@@ -49,20 +39,18 @@ function ImageStack({ images, header }: ImageStackProps) {
         const isLandscape = aspectRatio >= 1;
 
         return (
-          <div key={image._key} className={styles.polaroidWrapper}>
-            <div
-              className={`${styles.imageContainer} ${isLandscape ? styles.landscape : styles.portrait}`}
-            >
-              <Image
-                src={image.asset.url}
-                alt={`${header} ${index + 1}`}
-                width={isLandscape ? 300 : 225}
-                height={isLandscape ? 225 : 300}
-                quality={95}
-                className={styles.image}
-              />
-            </div>
-            <div className={styles.caption}>{header}</div>
+          <div
+            key={image._key}
+            className={`${styles.imageContainer} ${isLandscape ? styles.landscape : styles.portrait}`}
+          >
+            <Image
+              src={image.asset.url}
+              alt={`${header} ${index + 1}`}
+              width={300}
+              height={225}
+              quality={95}
+              className={styles.image}
+            />
           </div>
         );
       })}
