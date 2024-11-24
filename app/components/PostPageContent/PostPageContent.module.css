@@ -12,20 +12,29 @@
 .images {
   grid-area: image;
   height: 100%;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  position: relative;
+  padding: 20px 0px;
+  display: flex;
+  gap: var(--spacing-md);
 
   /* Mobile styles (horizontal scroll) */
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
   scroll-snap-type: x mandatory;
-
-  /* Hide scrollbars */
+  scroll-padding: 0;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
 
   /* Desktop styles (vertical scroll) */
   @media (min-width: 768px) {
+    display: block;
+    padding: 0px;
+    width: 100%;
+    margin-left: 0;
     overflow-x: hidden;
     overflow-y: scroll;
     white-space: normal;
@@ -35,14 +44,29 @@
 
 .image {
   display: inline-flex;
-  width: 100%;
   height: 100%;
-  justify-content: center;
-  scroll-snap-align: center;
+  justify-content: flex-end;
+  scroll-snap-align: start;
+
+  &:not(:last-child) {
+    padding-left: 20px;
+    justify-content: flex-start;
+  }
+
+  &:last-child {
+    padding-right: 20px;
+  }
+
+  &:first-child {
+    padding-left: 20px;
+  }
 
   @media (min-width: 768px) {
+    width: 100%;
+    justify-content: center;
     display: flex;
     width: 100%;
+    padding: 0;
   }
 }
 
@@ -50,12 +74,11 @@
   height: fit-content;
   background: white;
   padding: 20px 20px 40px 20px;
-  margin: 0 24px;
   box-shadow: var(--box-shadow);
   border-radius: 16px;
 
   @media (min-width: 768px) {
-    margin-top: 220px;
+    margin: 220px 24px 0px 24px;
   }
 
   @media (min-width: 1024px) {
@@ -63,29 +86,39 @@
   }
 }
 
+.image:not(:only-child) .portrait,
+.image:not(:only-child) .landscape {
+  width: calc(100vw - 100px);
+
+  @media (min-width: 768px) {
+    width: unset;
+  }
+}
+
 .landscape img {
   aspect-ratio: 4/3;
-  width: min(100%, 1200px);
+
+  @media (min-width: 768px) {
+    width: min(100%, 1200px);
+  }
 }
 
 .landscape img,
 .portrait img {
   width: 100%;
-}
-
-.portrait img {
-  aspect-ratio: 3/4;
-  width: min(100%, 800px);
-}
-
-.image img {
-  width: 100%;
   height: fit-content;
-  max-height: calc(100vh - 120px - 100px);
   object-fit: cover;
 
   @media (min-width: 768px) {
     max-height: calc(100vh - 220px - 200px);
+  }
+}
+
+.portrait img {
+  aspect-ratio: 3/4;
+
+  @media (min-width: 768px) {
+    width: min(100%, 800px);
   }
 }
 
