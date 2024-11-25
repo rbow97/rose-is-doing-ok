@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-lg);
-  gap: var(--spacing-lg);
   grid-column: span 1;
   padding: 0px;
   width: 100%;
@@ -19,30 +18,30 @@
 }
 
 .imageStack {
-  position: relative;
   width: 100%;
   max-width: 300px;
+  display: grid;
+  place-items: center;
 }
 
 .imageContainer {
-  position: relative;
   overflow: hidden;
   width: min(100%, 300px);
 }
 
 .polaroidWrapper {
   margin: auto;
-  position: absolute;
-  inset: 0;
+  margin-top: 0;
   background: white;
   padding: 15px 15px 0px 15px;
   box-shadow: var(--box-shadow);
   border-radius: 8px;
   transition: transform 0.3s ease;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .polaroidWrapper:first-child {
-  position: relative;
   z-index: 1;
 }
 
@@ -92,20 +91,22 @@
   font-size: 12px;
 }
 
-.polaroidWrapper:nth-child(2) {
-  z-index: 2;
-  transform: rotate(-4deg);
+.polaroidWrapper:not(:last-child):nth-child(even) {
+  --rotation: -4deg;
+  transform: rotate(var(--rotation));
 }
 
-.polaroidWrapper:nth-child(3) {
-  z-index: 2;
-  transform: rotate(4deg);
+.polaroidWrapper:not(:last-child):nth-child(odd) {
+  --rotation: 4deg;
+  transform: rotate(var(--rotation));
 }
 
-.imageStack:hover .polaroidWrapper:nth-child(2) {
-  transform: rotate(-8deg);
+.imageStack:hover .polaroidWrapper:not(:last-child) {
+  transform: rotate(calc(var(--rotation) * 2));
 }
 
-.imageStack:hover .polaroidWrapper:nth-child(3) {
-  transform: rotate(8deg);
+.polaroidWrapper:last-child {
+  z-index: 3;
+  --rotation: 0deg;
+  transform: rotate(0deg);
 }
