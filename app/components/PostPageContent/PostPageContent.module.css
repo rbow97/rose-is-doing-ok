@@ -103,39 +103,11 @@
   }
 }
 
-.image:not(:only-child) .portrait,
-.image:not(:only-child) .landscape {
+.multiImage {
   width: calc(100vw - 70px);
 
   @media (min-width: 768px) {
     width: unset;
-  }
-}
-
-.landscape img {
-  aspect-ratio: 4/3;
-
-  @media (min-width: 768px) {
-    width: min(100%, 1200px);
-  }
-}
-
-.landscape img,
-.portrait img {
-  width: 100%;
-  height: fit-content;
-  object-fit: cover;
-
-  @media (min-width: 768px) {
-    max-height: calc(100vh - 220px - 200px);
-  }
-}
-
-.portrait img {
-  aspect-ratio: 3/4;
-
-  @media (min-width: 768px) {
-    width: min(100%, 800px);
   }
 }
 

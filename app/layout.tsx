@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { Container } from "./components/Container/Container";
 import { Header } from "./components/Header/Header";
 import { MoodInitializer } from "./components/MoodInitializer";
+import Footer from "./components/Footer/Footer";
 
 const spaceGrotesk = localFont({
   src: [
@@ -54,8 +55,9 @@ export default async function RootLayout({
       <body className={spaceGrotesk.className}>
         <MoodInitializer />
         <Header />
-        <main>
+        <main className='fullHeight'>
           <Container>{children}</Container>
+          <Footer />
         </main>
       </body>
     </html>

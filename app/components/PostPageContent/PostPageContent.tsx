@@ -8,11 +8,37 @@ import Image from "next/image";
 import { useRef } from "react";
 import { Grid } from "../Grid/Grid";
 import styles from "./PostPageContent.module.css";
+import { PostMeta } from "../posts/PostContent/PostMeta";
+import { Polaroid } from "../media/Polaroid/Polaroid";
 
 interface PostPageContentProps {
   post: Post;
   isLandscape: boolean;
 }
+
+// export function PostPageContent(props: PostPageContentProps) {
+//   const { post } = props;
+//   const imagesRef = useRef<HTMLDivElement | null>(null);
+//   useScrollSnap(imagesRef);
+
+//   return (
+//     <Grid gutter={60} columns={6} className={styles.container}>
+//       <div className={styles.images} ref={imagesRef}>
+//         {post.images.map((image) => (
+//           <div key={image._key} className={styles.imageWrapper}>
+//             <Polaroid
+//               src={image.asset.url}
+//               alt={image.asset.alt || post.header}
+//               width={image.asset.metadata.dimensions.width}
+//               height={image.asset.metadata.dimensions.height}
+//             />
+//           </div>
+//         ))}
+//       </div>
+//       <PostMeta post={post} />
+//     </Grid>
+//   );
+// }
 
 export function PostPageContent(props: PostPageContentProps) {
   const { post } = props;
@@ -25,13 +51,19 @@ export function PostPageContent(props: PostPageContentProps) {
     <Grid gutter={60} columns={6} className={styles.container}>
       <div className={styles.images} ref={imagesRef}>
         {images.map((image) => {
-          const aspectRatio =
-            image.asset?.metadata?.dimensions?.aspectRatio ?? 1;
-          const isLandscape = aspectRatio >= 1;
-
+          const isSingleImage = images.length === 1;
           return (
             <div key={image._key} className={styles.image}>
-              <div
+              <Polaroid
+                src={image.asset.url}
+                alt={image.asset.alt || post.header}
+                width={image.asset.metadata.dimensions.width}
+                height={image.asset.metadata.dimensions.height}
+                className={
+                  isSingleImage ? styles.singleImage : styles.multiImage
+                }
+              />
+              {/* <div
                 className={`${styles.polaroidWrapper} ${isLandscape ? styles.landscape : styles.portrait}`}
               >
                 <Image
@@ -43,7 +75,7 @@ export function PostPageContent(props: PostPageContentProps) {
                   priority
                   className={styles.featuredImage}
                 />
-              </div>
+              </div> */}
             </div>
           );
         })}

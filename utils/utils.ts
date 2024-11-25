@@ -2,6 +2,7 @@ import {
   getAllPosts,
   getDynamicHeaders,
   getMostRecentMood,
+  getPostById,
 } from "./sanity.utils";
 
 export async function fetchPostsSafely() {
@@ -41,6 +42,18 @@ export async function fetchDynamicHeaders() {
         error instanceof Error
           ? error.message
           : "Failed to fetch dynamic headers",
+    };
+  }
+}
+
+export async function fetchPostById(id: string) {
+  try {
+    const post = await getPostById(id);
+    return { data: post, error: null };
+  } catch (error) {
+    return {
+      data: null,
+      error: error instanceof Error ? error.message : "Failed to fetch post",
     };
   }
 }

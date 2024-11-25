@@ -32,6 +32,10 @@ a {
   }
 }
 
+.fullHeight {
+  min-height: 100vh;
+}
+
 .underline:hover {
   text-decoration: underline;
   text-decoration-style: wavy;
