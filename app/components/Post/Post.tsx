@@ -1,5 +1,6 @@
 "use client";
 
+import { useFormattedDate } from "@/app/hooks/useFormattedDate";
 import {
   MoodType,
   type Post,
@@ -7,8 +8,8 @@ import {
 } from "@/sanity/schemaTypes/post";
 import Image from "next/image";
 import Link from "next/link";
+import { PolaroidSmall } from "../media/PolaroidSmall/PolaroidSmall";
 import styles from "./Post.module.css";
-import { useFormattedDate } from "@/app/hooks/useFormattedDate";
 
 interface PostProps {
   post: Post;
@@ -47,27 +48,16 @@ function PostLink({ id, children }: { id: string; children: React.ReactNode }) {
 function ImageStack({ images, header, date, moodType }: ImageStackProps) {
   return (
     <div className={styles.imageStack}>
-      {images?.map((image, index) => {
-        const aspectRatio = image.asset?.metadata?.dimensions?.aspectRatio ?? 1;
-        const isLandscape = aspectRatio >= 1;
-
+      {images?.map((image) => {
         return (
-          <div
+          <PolaroidSmall
             key={image._key}
-            className={`${styles.polaroidWrapper} ${isLandscape ? styles.landscape : styles.portrait}`}
+            src={image.asset.url}
+            alt={image.asset.alt || header}
+            width={image.asset.metadata.dimensions.width}
+            height={image.asset.metadata.dimensions.height}
+            className={styles.polaroidWrapper}
           >
-            <div
-              className={`${styles.imageContainer} ${isLandscape ? styles.landscape : styles.portrait}`}
-            >
-              <Image
-                src={image.asset.url}
-                alt={`${header} ${index + 1}`}
-                width={isLandscape ? 300 : 225}
-                height={isLandscape ? 225 : 300}
-                quality={95}
-                className={styles.image}
-              />
-            </div>
             <div className={styles.caption}>
               <h2>{header}</h2>
               {moodType && (
@@ -82,7 +72,7 @@ function ImageStack({ images, header, date, moodType }: ImageStackProps) {
               )}
               <p className={styles.date}>{date}</p>
             </div>
-          </div>
+          </PolaroidSmall>
         );
       })}
     </div>

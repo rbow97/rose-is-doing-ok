@@ -7,12 +7,12 @@ import { Grid } from "../Grid/Grid";
 import { Polaroid } from "../media/Polaroid/Polaroid";
 import { PostMeta } from "../posts/PostContent/PostMeta";
 import styles from "./PostPageContent.module.css";
+import clsx from "clsx";
 
 interface PostPageContentProps {
   post: Post;
   isLandscape: boolean;
 }
-// }
 
 export function PostPageContent(props: PostPageContentProps) {
   const { post } = props;
@@ -34,9 +34,10 @@ export function PostPageContent(props: PostPageContentProps) {
                 alt={image.asset.alt || post.header}
                 width={image.asset.metadata.dimensions.width}
                 height={image.asset.metadata.dimensions.height}
-                className={
-                  isSingleImage ? styles.singleImage : styles.multiImage
-                }
+                className={clsx(
+                  isSingleImage ? styles.singleImage : styles.multiImage,
+                  styles.polaroidImage
+                )}
               />
             </div>
           );

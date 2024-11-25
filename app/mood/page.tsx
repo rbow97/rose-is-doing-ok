@@ -1,4 +1,4 @@
-import { MoodType, Post } from "@/sanity/schemaTypes/post";
+import { MoodType, Post, SanityImage } from "@/sanity/schemaTypes/post";
 import { fetchPostsSafely } from "@/utils/utils";
 import { Grid } from "../components/Grid/Grid";
 import { MoodTable } from "../components/MoodTable/MoodTable";
@@ -20,7 +20,7 @@ export default async function MoodPage() {
         acc: {
           [key: string]: {
             mood: MoodType;
-            image?: string;
+            image?: SanityImage;
             id: string;
           };
         },
@@ -30,7 +30,7 @@ export default async function MoodPage() {
 
         acc[date] = {
           mood: post.moodType || "neutral",
-          image: post.images?.[0]?.asset.url,
+          image: post.images?.[0],
           id: post._id,
         };
         return acc;

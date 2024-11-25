@@ -1,24 +1,24 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { Table } from "../Table/Table";
-import { useState } from "react";
-import { ImagePreview } from "../ImagePreview/ImagePreview";
-import styles from "./MoodTable.module.css";
-import { MoodType } from "@/sanity/schemaTypes/post";
+import { MoodType, SanityImage } from "@/sanity/schemaTypes/post";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Polaroid } from "../media/Polaroid/Polaroid";
+import { Table } from "../Table/Table";
+import styles from "./MoodTable.module.css";
 
 interface MoodTableProps {
   entries: {
     date: string;
     id: string;
-    mood: { type: MoodType; image?: string };
+    mood: { type: MoodType; image?: SanityImage };
   }[];
   className?: string;
 }
 
 export function MoodTable({ entries, className }: MoodTableProps) {
-  const [hoveredImage, setHoveredImage] = useState<string | null>(null);
+  const [hoveredImage, setHoveredImage] = useState<SanityImage | null>(null);
   const router = useRouter();
   return (
     <>
@@ -47,10 +47,15 @@ export function MoodTable({ entries, className }: MoodTableProps) {
         </Table.Body>
       </Table>
 
-      <ImagePreview
-        image={hoveredImage}
-        className={styles.imagePreviewContainer}
-      />
+      {hoveredImage && (
+        <Polaroid
+          width={hoveredImage.asset.metadata.dimensions.width}
+          height={hoveredImage.asset.metadata.dimensions.height}
+          src={hoveredImage.asset.url}
+          alt="Preview"
+          className={styles.imagePreviewContainer}
+        />
+      )}
     </>
   );
 }

@@ -8,4 +8,5 @@
 .imagePreviewContainer {
   grid-column-start: 4;
   grid-column-end: 6;
+  margin-left: 32px;
 }

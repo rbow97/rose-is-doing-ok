@@ -5,10 +5,6 @@
   box-shadow: var(--box-shadow);
   border-radius: 16px;
 
-  @media (min-width: 768px) {
-    margin: 220px 24px 0px 24px;
-  }
-
   @media (min-width: 1024px) {
     padding: 40px 40px 80px 40px;
   }

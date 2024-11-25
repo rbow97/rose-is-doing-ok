@@ -1,4 +1,4 @@
-import { Post } from "@/sanity/schemaTypes/post";
+import { Post, SanityImage } from "@/sanity/schemaTypes/post";
 import { TwoColumnTable } from "../TwoColumnTable/TwoColumnTable";
 
 interface GroupedPosts {
@@ -8,7 +8,7 @@ interface GroupedPosts {
 interface CatalogueTableProps {
   posts: Post[];
   onPostClick: (id: string) => void;
-  onHover?: (image: string | null) => void;
+  onHover?: (image: SanityImage | null) => void;
   className?: string;
 }
 
@@ -27,8 +27,8 @@ function sortPostsByDate(posts: Post[]): Post[] {
   );
 }
 
-function getFirstImageUrl(post: Post): string | null {
-  return post.images?.[0]?.asset.url || null;
+function getFirstImage(post: Post): SanityImage | null {
+  return post.images?.[0] || null;
 }
 
 export function CatalogueTable({
@@ -51,7 +51,7 @@ export function CatalogueTable({
                 <TwoColumnTable.ContentRow
                   key={post._id}
                   onClick={() => onPostClick(post._id)}
-                  onHover={() => onHover?.(getFirstImageUrl(post))}
+                  onHover={() => onHover?.(getFirstImage(post))}
                   onLeave={() => onHover?.(null)}
                 >
                   {post.header}

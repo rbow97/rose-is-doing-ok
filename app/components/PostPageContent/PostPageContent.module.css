@@ -87,19 +87,9 @@
   }
 }
 
-.polaroidWrapper {
-  height: fit-content;
-  background: white;
-  padding: 20px 20px 40px 20px;
-  box-shadow: var(--box-shadow);
-  border-radius: 16px;
-
+.polaroidImage {
   @media (min-width: 768px) {
     margin: 220px 24px 0px 24px;
-  }
-
-  @media (min-width: 1024px) {
-    padding: 40px 40px 80px 40px;
   }
 }
 

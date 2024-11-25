@@ -1,11 +1,11 @@
 "use client";
 
-import { Grid } from "../Grid/Grid";
-import { ImagePreview } from "../ImagePreview/ImagePreview";
-import { CatalogueTable } from "../CatalogueTable/CatalogueTable";
-import { useState } from "react";
-import { Post } from "@/sanity/schemaTypes/post";
+import { Post, SanityImage } from "@/sanity/schemaTypes/post";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { CatalogueTable } from "../CatalogueTable/CatalogueTable";
+import { Grid } from "../Grid/Grid";
+import { PolaroidSmall } from "../media/PolaroidSmall/PolaroidSmall";
 import styles from "./CataloguePageTables.module.css";
 
 interface CataloguePageTablesProps {
@@ -14,7 +14,7 @@ interface CataloguePageTablesProps {
 
 export function CataloguePageTables({ posts }: CataloguePageTablesProps) {
   const router = useRouter();
-  const [hoveredImage, setHoveredImage] = useState<string | null>(null);
+  const [hoveredImage, setHoveredImage] = useState<SanityImage | null>(null);
 
   return (
     <Grid columns={6}>
@@ -24,8 +24,14 @@ export function CataloguePageTables({ posts }: CataloguePageTablesProps) {
         onPostClick={(id) => router.push(`/post/${id}`)}
         onHover={setHoveredImage}
       />
-
-      <ImagePreview className={styles.imagePreview} image={hoveredImage} />
+      {hoveredImage && (
+        <PolaroidSmall
+          src={hoveredImage.asset.url}
+          alt={hoveredImage.asset.alt || "Preview"}
+          width={hoveredImage.asset.metadata.dimensions.width}
+          height={hoveredImage.asset.metadata.dimensions.height}
+        />
+      )}
     </Grid>
   );
 }
