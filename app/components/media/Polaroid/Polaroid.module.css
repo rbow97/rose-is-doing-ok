@@ -1,7 +1,7 @@
 .wrapper {
   height: fit-content;
   background: white;
-  padding: 16px 16px 40px 16px;
+  padding: var(--polaroid-padding-mobile);
   box-shadow: var(--box-shadow);
   border-radius: 16px;
 
@@ -25,10 +25,20 @@
 }
 
 .landscape img {
-  aspect-ratio: 4/3;
+  aspect-ratio: var(--ratio-landscape);
 
   @media (min-width: 768px) {
-    width: min(100%, 1200px);
+    width: min(100%, var(--image-width-landscape));
+    max-height: calc(100vh - var(--polaroid-margin-top) - 200px);
+  }
+}
+
+.portrait img {
+  aspect-ratio: var(--ratio-portrait);
+
+  @media (min-width: 768px) {
+    width: min(100%, var(--image-width-portrait));
+    max-height: calc(100vh - var(--polaroid-margin-top) - 200px);
   }
 }
 
@@ -40,14 +50,6 @@
 
   @media (min-width: 768px) {
     max-height: calc(100vh - 220px - 200px);
-  }
-}
-
-.portrait img {
-  aspect-ratio: 3/4;
-
-  @media (min-width: 768px) {
-    width: min(100%, 800px);
   }
 }
 

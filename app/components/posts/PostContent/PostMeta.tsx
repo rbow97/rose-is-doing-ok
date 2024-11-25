@@ -12,22 +12,20 @@ export function PostMeta(props: PostMetaProps) {
   const formattedDate = useFormattedDate(post.dateUploaded);
 
   return (
-    <section className={styles.meta}>
+    <div className={styles.meta}>
       <div className={styles.header}>
         <h1 className={styles.title}>{post.header}</h1>
-        <div className={styles.details}>
-          <time className={styles.date}>{formattedDate}</time>
-          {post.moodType && (
-            <BaseImage
-              src={`/moods/${post.moodType}.svg`}
-              alt={post.moodType}
-              width={16}
-              height={16}
-              className={styles.mood}
-            />
-          )}
-        </div>
+        <time className={styles.date}>{formattedDate}</time>
+        {post.moodType && (
+          <BaseImage
+            src={`/moods/${post.moodType}.svg`}
+            alt={post.moodType}
+            width={16}
+            height={16}
+            className={styles.mood}
+          />
+        )}
       </div>
-    </section>
+    </div>
   );
 }

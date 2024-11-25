@@ -50,4 +50,24 @@
   --breakpoint-mobile: 768px;
 
   --box-shadow: 0px 4px 20px rgba(34, 34, 34, 0.25);
+
+  /* Add new layout variables */
+  --polaroid-padding-mobile: 16px 16px 40px;
+  --polaroid-padding-desktop: 40px 40px 80px;
+  --polaroid-margin-top: 220px;
+  --polaroid-border-radius: 16px;
+
+  /* Image dimensions */
+  --image-width-landscape: 1200px;
+  --image-width-portrait: 800px;
+  --image-height-landscape: 800px;
+  --image-height-portrait: 1200px;
+
+  /* Aspect ratios */
+  --ratio-landscape: 4/3;
+  --ratio-portrait: 3/4;
+
+  /* Scroll behavior */
+  --scroll-padding: 0;
+  --scroll-behavior: smooth;
 }

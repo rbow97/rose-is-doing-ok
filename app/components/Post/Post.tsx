@@ -57,7 +57,6 @@ function ImageStack({ images, header, date, moodType }: ImageStackProps) {
             className={`${styles.polaroidWrapper} ${isLandscape ? styles.landscape : styles.portrait}`}
           >
             <div
-              key={image._key}
               className={`${styles.imageContainer} ${isLandscape ? styles.landscape : styles.portrait}`}
             >
               <Image
