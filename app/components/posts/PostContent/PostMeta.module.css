@@ -3,10 +3,6 @@
   flex-direction: column;
   gap: var(--spacing-md);
   grid-area: content;
-
-  @media (min-width: 768px) {
-    margin-top: var(--polaroid-margin-top);
-  }
 }
 
 .header {

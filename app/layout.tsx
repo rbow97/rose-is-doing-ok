@@ -55,9 +55,9 @@ export default async function RootLayout({
       <body className={spaceGrotesk.className}>
         <MoodInitializer />
         <Header />
-        <main>
-          <Container className="fullHeight">{children}</Container>
-          <Footer />
+        <main className="marginTop">
+          <Container>{children}</Container>
+          {/* <Footer /> */}
         </main>
       </body>
     </html>

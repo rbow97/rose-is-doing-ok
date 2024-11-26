@@ -30,15 +30,13 @@ export function Polaroid({
         className
       )}
     >
-      <div className={styles.imageContainer}>
-        <BaseImage
-          src={src}
-          alt={alt}
-          width={isLandscape ? 1200 : 800}
-          height={isLandscape ? 800 : 1200}
-          className={styles.image}
-        />
-      </div>
+      <BaseImage
+        src={src}
+        alt={alt}
+        width={isLandscape ? 1200 : 800}
+        height={isLandscape ? 800 : 1200}
+        className={styles.image}
+      />
       {caption && (
         <div className={styles.caption}>
           <p>{caption}</p>

@@ -10,7 +10,7 @@ export default async function CataloguePage() {
   if (!posts?.length) return <div>No posts found</div>;
 
   return (
-    <section className="paddingTop">
+    <section>
       <CataloguePageTables posts={posts} />
     </section>
   );

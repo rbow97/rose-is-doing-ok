@@ -30,16 +30,14 @@ export function PolaroidSmall({
         className
       )}
     >
-      <div className={styles.imageContainer}>
-        <BaseImage
-          src={src}
-          alt={alt}
-          width={isLandscape ? 300 : 225}
-          height={isLandscape ? 225 : 300}
-          quality={95}
-          className={styles.image}
-        />
-      </div>
+      <BaseImage
+        src={src}
+        alt={alt}
+        width={isLandscape ? 300 : 225}
+        height={isLandscape ? 225 : 300}
+        quality={95}
+        className={styles.image}
+      />
       {children}
     </div>
   );
