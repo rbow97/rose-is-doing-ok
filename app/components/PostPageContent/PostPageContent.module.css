@@ -1,16 +1,13 @@
 .container {
-  grid-template-areas: "image" "content";
   padding-top: 120px;
 
   @media (min-width: 768px) {
     height: 100%;
-    grid-template-areas: "image image image content content content";
     padding-top: 0px;
   }
 }
 
 .images {
-  grid-area: image;
   height: 100%;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
@@ -89,7 +86,7 @@
 
 .polaroidImage {
   @media (min-width: 768px) {
-    margin: 220px 24px 0px 24px;
+    margin: 170px 24px 0px 24px;
   }
 }
 

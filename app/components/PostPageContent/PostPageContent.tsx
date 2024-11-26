@@ -25,7 +25,15 @@ export function PostPageContent(props: PostPageContentProps) {
 
   return (
     <Grid gutter={60} columns={6} className={styles.container}>
-      <div className={styles.images} ref={imagesRef}>
+      <Grid.Item mobile={{ column: "1 / -1" }} desktop={{ column: "1 / 3" }}>
+        <PostMeta post={post} />
+      </Grid.Item>
+      <Grid.Item
+        className={styles.image}
+        ref={imagesRef}
+        mobile={{ column: "1 / -1", row: "1 / 2" }}
+        desktop={{ column: "4 / 7" }}
+      >
         {images.map((image) => {
           return (
             <div key={image._key} className={styles.image}>
@@ -42,8 +50,7 @@ export function PostPageContent(props: PostPageContentProps) {
             </div>
           );
         })}
-      </div>
-      <PostMeta post={post} />
+      </Grid.Item>
     </Grid>
   );
 }

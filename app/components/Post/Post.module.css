@@ -70,7 +70,9 @@
 }
 
 .imageStack:hover .polaroidWrapper:not(:last-child) {
-  transform: rotate(calc(var(--rotation) * 2));
+  @media (min-width: 768px) {
+    transform: rotate(calc(var(--rotation) * 2));
+  }
 }
 
 .polaroidWrapper:last-child {
