@@ -4,6 +4,7 @@
 
 .meta {
   height: fit-content;
+  opacity: 0;
 
   @media (min-width: 768px) {
     position: sticky;
@@ -19,6 +20,7 @@
   align-items: center;
   gap: 20px;
   padding-top: var(--spacing-lg);
+  opacity: 0;
 }
 
 .imageWrapper {

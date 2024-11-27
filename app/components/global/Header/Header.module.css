@@ -5,7 +5,7 @@
   right: 0;
   z-index: 100;
   background: var(--background-colour);
-  padding: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-xl);
   transition: all 0.3s ease-in-out;
   border-bottom: 1px solid transparent;
 }

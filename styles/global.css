@@ -45,6 +45,19 @@ a {
   animation-fill-mode: forwards;
 }
 
+.fadeOut {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .underline:hover {
   text-decoration: underline;
   text-decoration-style: wavy;

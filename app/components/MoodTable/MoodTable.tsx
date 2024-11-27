@@ -48,7 +48,7 @@ export function MoodTable({ entries, className }: MoodTableProps) {
       </Table>
 
       {hoveredImage && (
-        <div className={styles.imagePreviewContainer}>
+        <div className={`${styles.imagePreviewContainer} fadeIn`}>
           <BaseImage
             src={hoveredImage.asset.url}
             alt={hoveredImage.asset.alt || "Preview"}

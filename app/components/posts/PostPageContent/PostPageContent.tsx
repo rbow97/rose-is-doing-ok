@@ -27,7 +27,7 @@ export function PostPageContent(props: PostPageContentProps) {
       <Divider />
       <Grid gutter={20} columns={6} className={styles.container}>
         <Grid.Item
-          className={styles.meta}
+          className={`${styles.meta} ${isReady ? "fadeIn" : ""}`}
           mobile={{ column: "1 / -1" }}
           desktop={{ column: "1 / 3" }}
         >
