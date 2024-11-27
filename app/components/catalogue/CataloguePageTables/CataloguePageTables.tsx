@@ -25,7 +25,7 @@ export function CataloguePageTables({ posts }: CataloguePageTablesProps) {
         onHover={setHoveredImage}
       />
       {hoveredImage && (
-        <div className={styles.imagePreviewContainer}>
+        <div className={`${styles.imagePreviewContainer} fadeIn`}>
           <BaseImage
             src={hoveredImage.asset.url}
             alt={hoveredImage.asset.alt || "Preview"}

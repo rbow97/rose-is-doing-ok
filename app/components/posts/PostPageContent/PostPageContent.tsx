@@ -1,13 +1,13 @@
 "use client";
 
+import { useImageLoading } from "@/app/hooks/useImageLoading";
 import { Post } from "@/sanity/schemaTypes/post";
 import { useRef } from "react";
+import { Divider } from "../../global/Divider/Divider";
 import { Grid } from "../../global/Grid/Grid";
 import { BaseImage } from "../../media/Image/Image";
 import { PostMeta } from "./PostMeta";
 import styles from "./PostPageContent.module.css";
-import { Divider } from "../../global/Divider/Divider";
-import { useImageLoading } from "@/app/hooks/useImageLoading";
 
 interface PostPageContentProps {
   post: Post;
@@ -15,7 +15,7 @@ interface PostPageContentProps {
 
 export function PostPageContent(props: PostPageContentProps) {
   const { post } = props;
-  const images = post.images;
+  const images = [...post.images];
   const { isReady } = useImageLoading({
     images,
   });
@@ -32,6 +32,7 @@ export function PostPageContent(props: PostPageContentProps) {
           desktop={{ column: "1 / 3" }}
         >
           <PostMeta post={post} />
+          <div className={styles.content}>{post.content}</div>
         </Grid.Item>
         <Grid.Item
           className={`${styles.image} ${isReady ? "fadeIn" : ""}`}

@@ -8,6 +8,11 @@
   padding: var(--spacing-md) var(--spacing-xl);
   transition: all 0.3s ease-in-out;
   border-bottom: 1px solid transparent;
+  transform: translateY(0);
+}
+
+.hidden {
+  transform: translateY(-100%);
 }
 
 .scrolled {

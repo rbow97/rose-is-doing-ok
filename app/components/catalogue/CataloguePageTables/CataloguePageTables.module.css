@@ -12,6 +12,12 @@
 .imagePreviewContainer {
   grid-column-start: 3;
   grid-column-end: 4;
+  opacity: 0;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 }
 
 .imagePreviewContainer img {

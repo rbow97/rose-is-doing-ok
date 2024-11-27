@@ -20,16 +20,18 @@
 
 .title {
   grid-area: header;
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   font-weight: 300;
 }
 
 .date {
   grid-area: time;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   color: var(--text-colour-muted);
 }
 
 .mood {
   grid-area: mood;
+  width: 12px;
+  height: 12px;
 }

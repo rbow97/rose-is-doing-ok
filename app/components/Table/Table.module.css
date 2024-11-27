@@ -2,6 +2,7 @@
   width: 100%;
   border-collapse: collapse;
   font-family: var(--font-space-grotesk);
+  font-size: var(--font-size-md);
   display: flex;
   flex-direction: column;
 }

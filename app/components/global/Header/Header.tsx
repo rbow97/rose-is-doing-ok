@@ -1,6 +1,7 @@
 "use client";
 
 import { useScrollPosition } from "@/app/hooks/useScrollPosition";
+import { useHeaderScroll } from "@/app/hooks/useHeaderScroll";
 import { Logo } from "../Logo/Logo";
 import { Navigation } from "../../Navigation/Navigation";
 import styles from "./Header.module.css";
@@ -12,6 +13,7 @@ export function Header() {
   const [dynamicHeader, setDynamicHeader] = useState<DynamicHeader | null>(
     null
   );
+  const { isHidden } = useHeaderScroll({ threshold: 150 });
   const isScrolled = useScrollPosition();
 
   useEffect(() => {
@@ -23,7 +25,13 @@ export function Header() {
   }, []);
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
+    <header
+      className={`
+      ${styles.header} 
+      ${isScrolled ? styles.scrolled : ""} 
+      ${isHidden ? styles.hidden : ""}
+    `}
+    >
       <nav>
         <Logo
           className={`${styles.logo} ${dynamicHeader?.replacableText ? "fadeIn" : ""}`}

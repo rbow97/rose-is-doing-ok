@@ -12,7 +12,7 @@
 }
 
 .navItem a {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
 }
 
 .active {

@@ -15,9 +15,14 @@ export default async function PostPage(props: Props) {
   if (error) return <div>Failed to load posts</div>;
   if (!post) return <div>No posts found</div>;
 
+  const postWithReversedImages = {
+    ...post,
+    images: post && [...post.images].reverse(),
+  };
+
   return (
     <section className={styles.section}>
-      <PostPageContent post={post} />
+      <PostPageContent post={postWithReversedImages} />
     </section>
   );
 }
