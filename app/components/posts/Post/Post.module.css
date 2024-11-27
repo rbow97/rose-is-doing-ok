@@ -14,6 +14,19 @@
   margin-bottom: auto;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.post {
+  opacity: 0;
+}
+
 .postLink {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
@@ -21,6 +34,11 @@
 
 .postLink:hover {
   opacity: 0.7;
+}
+
+.fadeIn {
+  animation: var(--animation-fade-in);
+  animation-fill-mode: forwards;
 }
 
 .imageWrapper {
@@ -53,6 +71,7 @@
   grid-area: header;
   font-size: 16px;
   color: var(--text-colour);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .mood {

@@ -1,0 +1,8 @@
+.post {
+  opacity: 0;
+}
+
+.fadeIn {
+  animation: var(--animation-fade-in);
+  animation-fill-mode: forwards;
+}

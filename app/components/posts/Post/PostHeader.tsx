@@ -9,13 +9,13 @@ interface PostHeaderProps {
   className?: string;
 }
 
-export function PostHeader({ title, date, id }: PostHeaderProps) {
+export function PostHeader({ title, date, id, className }: PostHeaderProps) {
   return (
-    <>
+    <div className={className}>
       <h2 className={styles.title}>
         <PostLink id={id}>{title}</PostLink>
       </h2>
       <time className={styles.date}>{date}</time>
-    </>
+    </div>
   );
 }

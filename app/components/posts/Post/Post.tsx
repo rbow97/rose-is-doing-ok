@@ -1,10 +1,9 @@
 "use client";
 
-import { useFormattedDate } from "@/app/hooks/useFormattedDate";
-import { SanityImage, type Post } from "@/sanity/schemaTypes/post";
+import { SanityImage } from "@/sanity/schemaTypes/post";
 import { BaseImage } from "../../media/Image/Image";
-import { PostHeader } from "./PostHeader";
 import styles from "./Post.module.css";
+import { PostHeader } from "./PostHeader";
 import { PostLink } from "./PostLink";
 
 interface PostProps {
@@ -23,7 +22,6 @@ export default function Post({
   isLandscape,
 }: PostProps) {
   const image = images[0];
-  const formattedDate = useFormattedDate(date);
 
   return (
     <>
@@ -41,7 +39,12 @@ export default function Post({
           />
         </div>
       </PostLink>
-      <PostHeader id={id} title={header} date={formattedDate} />
+      <PostHeader
+        className={styles.header}
+        id={id}
+        title={header}
+        date={date}
+      />
     </>
   );
 }

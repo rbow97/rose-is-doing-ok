@@ -1,7 +1,5 @@
 .footer {
-  margin-top: auto;
-  background-color: var(--footer-background-colour);
-  padding: var(--spacing-md);
+  margin: var(--spacing-xxl) 0 var(--spacing-lg) 0;
   color: var(--text-colour-muted);
   font-size: var(--font-size-sm);
 }
