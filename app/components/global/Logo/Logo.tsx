@@ -3,7 +3,7 @@ import styles from "./Logo.module.css";
 import { DynamicHeader } from "@/sanity/schemaTypes/dynamicHeader";
 
 interface LogoProps {
-  dynamicText: DynamicHeader;
+  dynamicText: DynamicHeader | null;
   defaultText?: string;
 }
 
@@ -15,7 +15,7 @@ export function Logo({ dynamicText, defaultText = "doing ok" }: LogoProps) {
       </Link>{" "}
       is{" "}
       <Link className="underline" href="/rose-is">
-        {dynamicText.replacableText}
+        {dynamicText?.replacableText || defaultText}
         <span className={styles.dynamicText}>{defaultText}</span>
       </Link>
     </h1>

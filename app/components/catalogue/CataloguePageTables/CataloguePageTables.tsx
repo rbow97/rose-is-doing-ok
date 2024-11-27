@@ -3,9 +3,9 @@
 import { Post, SanityImage } from "@/sanity/schemaTypes/post";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Grid } from "../../global/Grid/Grid";
+import { BaseImage } from "../../media/Image/Image";
 import { CatalogueTable } from "../CatalogueTable/CatalogueTable";
-import { Grid } from "../Grid/Grid";
-import { PolaroidSmall } from "../media/PolaroidSmall/PolaroidSmall";
 import styles from "./CataloguePageTables.module.css";
 
 interface CataloguePageTablesProps {
@@ -25,12 +25,14 @@ export function CataloguePageTables({ posts }: CataloguePageTablesProps) {
         onHover={setHoveredImage}
       />
       {hoveredImage && (
-        <PolaroidSmall
-          src={hoveredImage.asset.url}
-          alt={hoveredImage.asset.alt || "Preview"}
-          width={hoveredImage.asset.metadata.dimensions.width}
-          height={hoveredImage.asset.metadata.dimensions.height}
-        />
+        <div className={styles.imagePreviewContainer}>
+          <BaseImage
+            src={hoveredImage.asset.url}
+            alt={hoveredImage.asset.alt || "Preview"}
+            width={hoveredImage.asset.metadata.dimensions.width}
+            height={hoveredImage.asset.metadata.dimensions.height}
+          />
+        </div>
       )}
     </Grid>
   );

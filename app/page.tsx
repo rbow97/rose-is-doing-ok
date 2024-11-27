@@ -1,5 +1,5 @@
 import { fetchPostsSafely } from "@/utils/utils";
-import { PostGrid } from "./components/posts/PostGrid/PostGrid";
+import { PostGrid } from "./components/homepage/PostGrid/PostGrid";
 
 export const revalidate = 0;
 

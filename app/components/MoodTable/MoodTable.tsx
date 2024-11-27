@@ -4,7 +4,7 @@ import { MoodType, SanityImage } from "@/sanity/schemaTypes/post";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Polaroid } from "../media/Polaroid/Polaroid";
+import { BaseImage } from "../media/Image/Image";
 import { Table } from "../Table/Table";
 import styles from "./MoodTable.module.css";
 
@@ -48,13 +48,14 @@ export function MoodTable({ entries, className }: MoodTableProps) {
       </Table>
 
       {hoveredImage && (
-        <Polaroid
-          width={hoveredImage.asset.metadata.dimensions.width}
-          height={hoveredImage.asset.metadata.dimensions.height}
-          src={hoveredImage.asset.url}
-          alt="Preview"
-          className={styles.imagePreviewContainer}
-        />
+        <div className={styles.imagePreviewContainer}>
+          <BaseImage
+            src={hoveredImage.asset.url}
+            alt={hoveredImage.asset.alt || "Preview"}
+            width={hoveredImage.asset.metadata.dimensions.width}
+            height={hoveredImage.asset.metadata.dimensions.height}
+          />
+        </div>
       )}
     </>
   );

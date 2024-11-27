@@ -1,5 +1,5 @@
 import { fetchDynamicHeaders } from "@/utils/utils";
-import { Grid } from "../components/Grid/Grid";
+import { Grid } from "../components/global/Grid/Grid";
 import { RoseIsTable } from "../components/RoseIsTable/RoseIsTable";
 import styles from "./page.module.css";
 

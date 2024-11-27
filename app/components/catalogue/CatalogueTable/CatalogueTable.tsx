@@ -1,5 +1,5 @@
 import { Post, SanityImage } from "@/sanity/schemaTypes/post";
-import { TwoColumnTable } from "../TwoColumnTable/TwoColumnTable";
+import { TwoColumnTable } from "../../TwoColumnTable/TwoColumnTable";
 
 interface GroupedPosts {
   [year: string]: Post[];

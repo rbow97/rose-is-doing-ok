@@ -1,5 +1,5 @@
 import { fetchPostsSafely } from "@/utils/utils";
-import { CataloguePageTables } from "../components/CataloguePageTables/CataloguePageTables";
+import { CataloguePageTables } from "../components/catalogue/CataloguePageTables/CataloguePageTables";
 
 export const revalidate = 0;
 

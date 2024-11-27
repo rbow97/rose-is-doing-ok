@@ -3,7 +3,7 @@
 import { useFormattedDate } from "@/app/hooks/useFormattedDate";
 import { useEffect, useState } from "react";
 
-import { Grid } from "../../Grid/Grid";
+import { Grid } from "../../global/Grid/Grid";
 import { Post as PostType, SanityImage } from "@/sanity/schemaTypes/post";
 import Post from "../Post/Post";
 import styles from "./PostGrid.module.css";

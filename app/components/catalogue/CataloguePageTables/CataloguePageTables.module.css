@@ -9,7 +9,12 @@
   }
 }
 
-.imagePreview {
+.imagePreviewContainer {
   grid-column-start: 3;
   grid-column-end: 4;
+}
+
+.imagePreviewContainer img {
+  width: 100%;
+  height: 100%;
 }

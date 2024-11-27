@@ -3,7 +3,7 @@
 import { useGridPositions } from "@/app/hooks/useGridPositions";
 import { Post as PostType } from "@/sanity/schemaTypes/post";
 import { Grid } from "../../global/Grid/Grid";
-import PostGridItem from "../../homepage/PostGrid/PostGridItem";
+import PostGridItem from "./PostGridItem";
 interface PostGridProps {
   posts: PostType[];
 }

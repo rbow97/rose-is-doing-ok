@@ -2,11 +2,11 @@
 
 import { Post } from "@/sanity/schemaTypes/post";
 import { useRef } from "react";
-import { Grid } from "../../Grid/Grid";
+import { Grid } from "../../global/Grid/Grid";
 import { BaseImage } from "../../media/Image/Image";
 import { PostMeta } from "./PostMeta";
 import styles from "./PostPageContent.module.css";
-import { Divider } from "../../Divider/Divider";
+import { Divider } from "../../global/Divider/Divider";
 
 interface PostPageContentProps {
   post: Post;

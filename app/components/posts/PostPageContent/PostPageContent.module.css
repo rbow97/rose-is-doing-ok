@@ -5,6 +5,7 @@
 .meta {
   position: sticky;
   top: 60px;
+  padding-top: var(--spacing-lg);
   height: fit-content;
 }
 
@@ -14,6 +15,7 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  padding-top: var(--spacing-lg);
 }
 
 .imageWrapper {

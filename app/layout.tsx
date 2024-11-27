@@ -1,10 +1,10 @@
 import "@/styles/global.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Container } from "./components/Container/Container";
-import { Header } from "./components/Header/Header";
+import { Container } from "./components/global/Container/Container";
+import { Header } from "./components/global/Header/Header";
 import { MoodInitializer } from "./components/MoodInitializer";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/global/Footer/Footer";
 
 const spaceGrotesk = localFont({
   src: [
