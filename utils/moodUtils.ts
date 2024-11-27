@@ -26,7 +26,7 @@ export function transformMoodData(posts: Post[]): MoodEntry[] {
         const date = new Date(post.dateUploaded).toLocaleDateString("en-GB");
         acc[date] = {
           mood: post.moodType || "neutral",
-          image: post.images?.[0],
+          image: post.images?.reverse()[0],
           id: post._id,
         };
         return acc;

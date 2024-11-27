@@ -13,6 +13,7 @@ export default async function MoodPage() {
   if (!posts?.length) return <div>No mood data found</div>;
 
   const moodEntries = transformMoodData(posts);
+
   return (
     <section className={styles.container}>
       <Grid columns={6}>

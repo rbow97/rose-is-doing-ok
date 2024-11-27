@@ -13,6 +13,12 @@ body {
   background-color: var(--background-colour);
 }
 
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+  touch-action: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;

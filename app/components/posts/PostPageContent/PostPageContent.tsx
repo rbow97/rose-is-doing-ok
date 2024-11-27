@@ -8,6 +8,7 @@ import { Grid } from "../../global/Grid/Grid";
 import { BaseImage } from "../../media/Image/Image";
 import { PostMeta } from "./PostMeta";
 import styles from "./PostPageContent.module.css";
+import { PostParagraphs } from "./PostParagraphs";
 
 interface PostPageContentProps {
   post: Post;
@@ -32,7 +33,9 @@ export function PostPageContent(props: PostPageContentProps) {
           desktop={{ column: "1 / 3" }}
         >
           <PostMeta post={post} />
-          <div className={styles.content}>{post.content}</div>
+          <div className={styles.content}>
+            <PostParagraphs post={post} />
+          </div>
         </Grid.Item>
         <Grid.Item
           className={`${styles.image} ${isReady ? "fadeIn" : ""}`}

@@ -20,6 +20,10 @@
   margin-top: var(--spacing-md);
 }
 
+.paragraph {
+  margin-bottom: var(--spacing-sm);
+}
+
 .image {
   width: 100%;
   display: flex;

@@ -58,6 +58,7 @@ export const post = defineType({
       name: "content",
       title: "Content",
       type: "text",
+      rows: 10,
     }),
     defineField({
       name: "song",

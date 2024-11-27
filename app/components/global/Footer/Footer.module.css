@@ -3,3 +3,7 @@
   color: var(--text-colour-muted);
   font-size: var(--font-size-md);
 }
+
+.footer p {
+  text-align: end;
+}

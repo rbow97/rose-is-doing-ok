@@ -1,0 +1,56 @@
+.hamburgerMenu {
+  position: relative;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  width: fit-content;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 101;
+}
+
+.hamburger span {
+  width: var(--spacing-md);
+  height: 1px;
+  background: var(--text-color, black);
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--background-color, white);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.overlay.open {
+  display: block;
+  opacity: 1;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-top: 80px;
+}
+
+.navItem {
+  margin: 1rem 0;
+}
