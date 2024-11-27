@@ -1,4 +1,4 @@
-import { PostPageContent } from "@/app/components/PostPageContent/PostPageContent";
+import { PostPageContent } from "@/app/components/posts/PostPageContent/PostPageContent";
 import { fetchPostById } from "@/utils/utils";
 import styles from "./page.module.css";
 

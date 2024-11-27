@@ -11,6 +11,7 @@ export async function getAllPosts(): Promise<Post[]> {
       header,
       "images": images[]{
         _key,
+        isLandscape,
         "asset": {
           "_ref": asset._ref,
           "_type": asset._type,
@@ -42,6 +43,7 @@ export async function getPostById(id: string): Promise<Post> {
       header,
       "images": images[]{
         _key,
+        isLandscape,
         "asset": {
           "_ref": asset._ref,
           "_type": asset._type,
@@ -74,8 +76,6 @@ export async function getMostRecentMood(): Promise<string | null> {
     )
     .then((result) => result?.moodType?.toLowerCase() || null);
 }
-
-
 
 export async function getPostsByType(
   type: "regular" | "mood"

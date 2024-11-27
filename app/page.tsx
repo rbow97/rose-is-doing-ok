@@ -1,7 +1,5 @@
 import { fetchPostsSafely } from "@/utils/utils";
-import { Grid } from "./components/Grid/Grid";
-import Post from "./components/Post/Post";
-import styles from "./page.module.css";
+import { PostGrid } from "./components/posts/PostGrid/PostGrid";
 
 export const revalidate = 0;
 
@@ -16,11 +14,5 @@ export default async function Home() {
       new Date(b.dateUploaded).getTime() - new Date(a.dateUploaded).getTime()
   );
 
-  return (
-    <Grid gutter={60} columns={3} rowGap="xl" className={styles.container}>
-      {sortedPosts.map((post) => (
-        <Post key={post._id} post={post} />
-      ))}
-    </Grid>
-  );
+  return <PostGrid posts={sortedPosts} />;
 }

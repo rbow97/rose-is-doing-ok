@@ -21,6 +21,16 @@ export const post = defineType({
           options: {
             hotspot: true,
           },
+          fields: [
+            defineField({
+              name: "isLandscape",
+              title: "Is Landscape",
+              type: "boolean",
+              description:
+                "Check if image should display in landscape orientation",
+              initialValue: false,
+            }),
+          ],
         },
       ],
       validation: (Rule) => Rule.required(),
@@ -96,6 +106,7 @@ export const post = defineType({
 
 export interface SanityImage {
   _key: string;
+  isLandscape: boolean;
   asset: {
     _ref: string;
     _type: "reference";

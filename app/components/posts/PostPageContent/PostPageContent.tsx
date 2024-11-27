@@ -3,9 +3,9 @@
 import { Post } from "@/sanity/schemaTypes/post";
 import clsx from "clsx";
 import { useRef } from "react";
-import { Grid } from "../Grid/Grid";
-import { Polaroid } from "../media/Polaroid/Polaroid";
-import { PostMeta } from "../posts/PostContent/PostMeta";
+import { Grid } from "../../Grid/Grid";
+import { Polaroid } from "../../media/Polaroid/Polaroid";
+import { PostMeta } from "./PostMeta";
 import styles from "./PostPageContent.module.css";
 
 interface PostPageContentProps {

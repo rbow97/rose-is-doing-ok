@@ -12,7 +12,7 @@ export default async function Roseis() {
   }));
 
   return (
-    <section className="paddingTop">
+    <section>
       <Grid columns={6}>
         <RoseIsTable className={styles.table} entries={formattedEntries} />
       </Grid>
