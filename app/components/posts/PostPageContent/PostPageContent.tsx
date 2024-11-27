@@ -33,7 +33,7 @@ export function PostPageContent(props: PostPageContentProps) {
         <Grid.Item
           className={styles.image}
           ref={imagesRef}
-          mobile={{ column: "1 / -1", row: "1 / 2" }}
+          mobile={{ column: "1 / -1" }}
           desktop={{ column: "4 / 7" }}
         >
           {images.map((image) => {

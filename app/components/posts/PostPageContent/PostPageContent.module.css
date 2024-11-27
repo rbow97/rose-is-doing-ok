@@ -3,10 +3,13 @@
 }
 
 .meta {
-  position: sticky;
-  top: 60px;
-  padding-top: var(--spacing-lg);
   height: fit-content;
+
+  @media (min-width: 768px) {
+    position: sticky;
+    top: 60px;
+    padding-top: var(--spacing-lg);
+  }
 }
 
 .image {
