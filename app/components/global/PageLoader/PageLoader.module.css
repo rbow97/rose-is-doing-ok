@@ -1,0 +1,23 @@
+.pageLoader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background-colour);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.loaded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader {
+  /* Add your loader animation styles here */
+}

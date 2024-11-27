@@ -25,7 +25,10 @@ export function Header() {
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <nav>
-        {dynamicHeader && <Logo dynamicText={dynamicHeader} />}
+        <Logo
+          className={`${styles.logo} ${dynamicHeader?.replacableText ? "fadeIn" : ""}`}
+          dynamicText={dynamicHeader}
+        />
         <Navigation />
       </nav>
     </header>

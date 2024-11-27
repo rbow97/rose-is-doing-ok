@@ -1,10 +1,9 @@
 "use client";
 
 import { useFormattedDate } from "@/app/hooks/useFormattedDate";
-import { useEffect, useState } from "react";
-
-import { Grid } from "../../global/Grid/Grid";
+import { useImageLoading } from "@/app/hooks/useImageLoading";
 import { Post as PostType, SanityImage } from "@/sanity/schemaTypes/post";
+import { Grid } from "../../global/Grid/Grid";
 import Post from "../Post/Post";
 import styles from "./PostGrid.module.css";
 
@@ -24,13 +23,10 @@ export default function PostGridItem({
   gridColumn,
 }: PostGridItemProps) {
   const formattedDate = useFormattedDate(date);
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    if (formattedDate) {
-      setIsReady(true);
-    }
-  }, [formattedDate]);
+  const { isReady } = useImageLoading({
+    images,
+    dependencies: [formattedDate],
+  });
 
   return (
     <Grid.Item
@@ -38,7 +34,7 @@ export default function PostGridItem({
       as="article"
       desktop={{ column: gridColumn as `${number} / ${number}` }}
       mobile={{ column: "1 / -1" }}
-      className={`${styles.post} ${isReady ? styles.fadeIn : ""}`}
+      className={`${styles.post} ${isReady ? "fadeIn" : ""}`}
     >
       <Post
         isLandscape={isLandscape}

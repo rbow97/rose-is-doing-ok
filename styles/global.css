@@ -40,6 +40,11 @@ a {
   min-height: 100vh;
 }
 
+.fadeIn {
+  animation: var(--animation-fade-in);
+  animation-fill-mode: forwards;
+}
+
 .underline:hover {
   text-decoration: underline;
   text-decoration-style: wavy;

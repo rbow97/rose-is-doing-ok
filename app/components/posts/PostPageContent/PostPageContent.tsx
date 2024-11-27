@@ -7,15 +7,18 @@ import { BaseImage } from "../../media/Image/Image";
 import { PostMeta } from "./PostMeta";
 import styles from "./PostPageContent.module.css";
 import { Divider } from "../../global/Divider/Divider";
+import { useImageLoading } from "@/app/hooks/useImageLoading";
 
 interface PostPageContentProps {
   post: Post;
-  isLandscape: boolean;
 }
 
 export function PostPageContent(props: PostPageContentProps) {
   const { post } = props;
   const images = post.images;
+  const { isReady } = useImageLoading({
+    images,
+  });
 
   const imagesRef = useRef<HTMLDivElement | null>(null);
 
@@ -31,7 +34,7 @@ export function PostPageContent(props: PostPageContentProps) {
           <PostMeta post={post} />
         </Grid.Item>
         <Grid.Item
-          className={styles.image}
+          className={`${styles.image} ${isReady ? "fadeIn" : ""}`}
           ref={imagesRef}
           mobile={{ column: "1 / -1" }}
           desktop={{ column: "4 / 7" }}
